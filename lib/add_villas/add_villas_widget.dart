@@ -391,7 +391,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
                                                 child: SizedBox(
-                                                  width: 370.0,
+                                                  width: double.infinity,
                                                   child: TextFormField(
                                                     controller:
                                                         _model.nameController,
@@ -476,7 +476,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
                                                 child: SizedBox(
-                                                  width: 370.0,
+                                                  width: double.infinity,
                                                   child: TextFormField(
                                                     controller: _model
                                                         .locationController,
@@ -561,7 +561,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
                                                 child: SizedBox(
-                                                  width: 370.0,
+                                                  width: double.infinity,
                                                   child: TextFormField(
                                                     controller: _model
                                                         .maxAdultController1,
@@ -646,7 +646,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
                                                 child: SizedBox(
-                                                  width: 370.0,
+                                                  width: double.infinity,
                                                   child: TextFormField(
                                                     controller: _model
                                                         .maxAdultController2,
@@ -731,7 +731,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
                                                 child: SizedBox(
-                                                  width: 370.0,
+                                                  width: double.infinity,
                                                   child: TextFormField(
                                                     controller: _model
                                                         .employeePercentageController,
@@ -817,7 +817,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
                                                 child: SizedBox(
-                                                  width: 370.0,
+                                                  width: double.infinity,
                                                   child: TextFormField(
                                                     controller: _model
                                                         .stratingPriceController,

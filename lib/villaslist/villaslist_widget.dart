@@ -144,7 +144,7 @@ class _VillaslistWidgetState extends State<VillaslistWidget>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              width: 412.0,
+                              width: double.infinity,
                               height: 56.0,
                               decoration: const BoxDecoration(
                                 color: Colors.white,
@@ -152,57 +152,62 @@ class _VillaslistWidgetState extends State<VillaslistWidget>
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 15.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Align(
-                                              alignment: const AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        14.0, 12.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Villas Lists',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .headlineMedium,
-                                                ).animateOnPageLoad(animationsMap[
-                                                    'textOnPageLoadAnimation']!),
+                                  Container(
+                                    width: double.infinity,
+                                    decoration: const BoxDecoration(),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 15.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          14.0, 12.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Villas Lists',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineMedium,
+                                                  ).animateOnPageLoad(animationsMap[
+                                                      'textOnPageLoadAnimation']!),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 5.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed('Add_villas');
+                                              },
+                                              child: const Icon(
+                                                Icons.add_box,
+                                                color: Colors.black,
+                                                size: 30.0,
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 5.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              context.pushNamed('Add_villas');
-                                            },
-                                            child: const Icon(
-                                              Icons.add_box,
-                                              color: Colors.black,
-                                              size: 30.0,
-                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Padding(

@@ -105,34 +105,36 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
             centerTitle: false,
             elevation: 0.0,
           ),
-          body: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
+          body: Align(
+            alignment: const AlignmentDirectional(0.0, 0.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(16.0),
-                              child: Image.network(
-                                addedvillasdetailsVillasRecord.phoUrl,
-                                width: MediaQuery.sizeOf(context).width * 0.911,
-                                height: 212.0,
-                                fit: BoxFit.cover,
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Align(
+                            alignment: const AlignmentDirectional(-1.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 20.0, 20.0, 0.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.network(
+                                  addedvillasdetailsVillasRecord.phoUrl,
+                                  width: 421.0,
+                                  height: 239.0,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.max,
@@ -519,30 +521,30 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                           ),
                         ),
                       ),
+                      Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primary,
+                          boxShadow: const [
+                            BoxShadow(
+                              blurRadius: 4.0,
+                              color: Color(0x55000000),
+                              offset: Offset(0.0, 2.0),
+                            )
+                          ],
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(0.0),
+                            bottomRight: Radius.circular(0.0),
+                            topLeft: Radius.circular(16.0),
+                            topRight: Radius.circular(16.0),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
-              ),
-              Container(
-                width: MediaQuery.sizeOf(context).width * 1.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primary,
-                  boxShadow: const [
-                    BoxShadow(
-                      blurRadius: 4.0,
-                      color: Color(0x55000000),
-                      offset: Offset(0.0, 2.0),
-                    )
-                  ],
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(0.0),
-                    bottomRight: Radius.circular(0.0),
-                    topLeft: Radius.circular(16.0),
-                    topRight: Radius.circular(16.0),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

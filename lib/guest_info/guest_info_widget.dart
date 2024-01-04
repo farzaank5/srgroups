@@ -139,7 +139,7 @@ class _GuestInfoWidgetState extends State<GuestInfoWidget>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      width: 412.0,
+                      width: double.infinity,
                       height: 48.0,
                       decoration: const BoxDecoration(
                         color: Colors.white,

@@ -299,7 +299,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: SizedBox(
-                                      width: 370.0,
+                                      width: double.infinity,
                                       child: TextFormField(
                                         controller: _model.nameController1,
                                         focusNode: _model.nameFocusNode1,
@@ -364,7 +364,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: SizedBox(
-                                      width: 370.0,
+                                      width: double.infinity,
                                       child: TextFormField(
                                         controller: _model.nameController2,
                                         focusNode: _model.nameFocusNode2,
@@ -429,7 +429,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: SizedBox(
-                                      width: 370.0,
+                                      width: double.infinity,
                                       child: TextFormField(
                                         controller:
                                             _model.phoneNumberController,
@@ -505,7 +505,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: SizedBox(
-                                      width: 370.0,
+                                      width: double.infinity,
                                       child: TextFormField(
                                         controller: _model.aadharController,
                                         focusNode: _model.aadharFocusNode,
@@ -580,7 +580,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: SizedBox(
-                                      width: 370.0,
+                                      width: double.infinity,
                                       child: Autocomplete<String>(
                                         initialValue: const TextEditingValue(),
                                         optionsBuilder: (textEditingValue) {
@@ -720,7 +720,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: SizedBox(
-                                      width: 370.0,
+                                      width: double.infinity,
                                       child: TextFormField(
                                         controller: _model.passwordController,
                                         focusNode: _model.passwordFocusNode,
@@ -799,7 +799,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 370.0,
+                                    width: double.infinity,
                                     child: TextFormField(
                                       controller:
                                           _model.passwordConfirmController,

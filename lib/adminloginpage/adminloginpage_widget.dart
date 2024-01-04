@@ -100,182 +100,205 @@ class _AdminloginpageWidgetState extends State<AdminloginpageWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       alignment: const AlignmentDirectional(0.0, -1.0),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: double.infinity,
-                              height: 237.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(16.0),
-                                  bottomRight: Radius.circular(16.0),
-                                  topLeft: Radius.circular(0.0),
-                                  topRight: Radius.circular(0.0),
-                                ),
-                              ),
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
-                              child: Align(
+                      child: Align(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Align(
                                 alignment: const AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 100.0, 0.0, 0.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    child: Image.asset(
-                                      'assets/images/Screenshot_2023-10-25_at_11.10.20_AM-removebg-preview.png',
-                                      width: 157.0,
-                                      height: 239.0,
-                                      fit: BoxFit.cover,
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 237.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: const BorderRadius.only(
+                                      bottomLeft: Radius.circular(16.0),
+                                      bottomRight: Radius.circular(16.0),
+                                      topLeft: Radius.circular(0.0),
+                                      topRight: Radius.circular(0.0),
+                                    ),
+                                  ),
+                                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                                  child: Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 100.0, 0.0, 0.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        child: Image.asset(
+                                          'assets/images/Screenshot_2023-10-25_at_11.10.20_AM-removebg-preview.png',
+                                          width: 157.0,
+                                          height: 239.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    32.0, 70.0, 32.0, 32.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Admin Login',
-                                      style: FlutterFlowTheme.of(context)
-                                          .displaySmall,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 12.0, 0.0, 24.0),
-                                      child: Text(
-                                        'Fill the required passcode to get access ',
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelMedium,
-                                      ),
-                                    ),
-                                    PinCodeTextField(
-                                      autoDisposeControllers: false,
-                                      appContext: context,
-                                      length: 6,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodyLarge,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      enableActiveFill: false,
-                                      autoFocus: true,
-                                      enablePinAutofill: false,
-                                      errorTextSpace: 16.0,
-                                      showCursor: true,
-                                      cursorColor: const Color(0xFF606060),
-                                      obscureText: false,
-                                      hintCharacter: '●',
-                                      keyboardType: TextInputType.number,
-                                      pinTheme: PinTheme(
-                                        fieldHeight: 44.0,
-                                        fieldWidth: 44.0,
-                                        borderWidth: 2.0,
-                                        borderRadius: const BorderRadius.only(
-                                          bottomLeft: Radius.circular(12.0),
-                                          bottomRight: Radius.circular(12.0),
-                                          topLeft: Radius.circular(12.0),
-                                          topRight: Radius.circular(12.0),
+                              Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      32.0, 70.0, 32.0, 32.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          'Admin Login',
+                                          style: FlutterFlowTheme.of(context)
+                                              .displaySmall,
                                         ),
-                                        shape: PinCodeFieldShape.box,
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        inactiveColor:
-                                            FlutterFlowTheme.of(context)
-                                                .alternate,
-                                        selectedColor: Colors.black,
-                                        activeFillColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        inactiveFillColor:
-                                            FlutterFlowTheme.of(context)
-                                                .alternate,
-                                        selectedFillColor: Colors.black,
                                       ),
-                                      controller: _model.pinCodeController,
-                                      onChanged: (_) {},
-                                      autovalidateMode:
-                                          AutovalidateMode.onUserInteraction,
-                                      validator: _model
-                                          .pinCodeControllerValidator
-                                          .asValidator(context),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 40.0, 0.0, 16.0),
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          if (_model.pinCodeController!.text ==
-                                              adminloginpageAdminLogincodeRecord
-                                                  ?.loginCode
-                                                  .toString()) {
-                                            context
-                                                .pushNamed('admin_dashboard');
-                                          } else {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Wrong pin',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
-                                                ),
-                                                duration: const Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                              ),
-                                            );
-                                          }
-                                        },
-                                        text: 'Submit',
-                                        options: FFButtonOptions(
-                                          width: 370.0,
-                                          height: 44.0,
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: Colors.black,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily:
-                                                        'Plus Jakarta Sans',
-                                                    color: Colors.white,
-                                                  ),
-                                          elevation: 3.0,
-                                          borderSide: const BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
+                                                  0.0, 12.0, 0.0, 24.0),
+                                          child: Text(
+                                            'Fill the required passcode to get access ',
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium,
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(30.0),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      PinCodeTextField(
+                                        autoDisposeControllers: false,
+                                        appContext: context,
+                                        length: 6,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .bodyLarge,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        enableActiveFill: false,
+                                        autoFocus: true,
+                                        enablePinAutofill: false,
+                                        errorTextSpace: 16.0,
+                                        showCursor: true,
+                                        cursorColor: const Color(0xFF606060),
+                                        obscureText: false,
+                                        hintCharacter: '●',
+                                        keyboardType: TextInputType.number,
+                                        pinTheme: PinTheme(
+                                          fieldHeight: 44.0,
+                                          fieldWidth: 44.0,
+                                          borderWidth: 2.0,
+                                          borderRadius: const BorderRadius.only(
+                                            bottomLeft: Radius.circular(12.0),
+                                            bottomRight: Radius.circular(12.0),
+                                            topLeft: Radius.circular(12.0),
+                                            topRight: Radius.circular(12.0),
+                                          ),
+                                          shape: PinCodeFieldShape.box,
+                                          activeColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          inactiveColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
+                                          selectedColor: Colors.black,
+                                          activeFillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          inactiveFillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
+                                          selectedFillColor: Colors.black,
+                                        ),
+                                        controller: _model.pinCodeController,
+                                        onChanged: (_) {},
+                                        autovalidateMode:
+                                            AutovalidateMode.onUserInteraction,
+                                        validator: _model
+                                            .pinCodeControllerValidator
+                                            .asValidator(context),
+                                      ),
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 40.0, 0.0, 16.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              if (_model.pinCodeController!
+                                                      .text ==
+                                                  adminloginpageAdminLogincodeRecord
+                                                      ?.loginCode
+                                                      .toString()) {
+                                                context.pushNamed(
+                                                    'admin_dashboard');
+                                              } else {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'Wrong pin',
+                                                      style: TextStyle(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                                    ),
+                                                    duration: const Duration(
+                                                        milliseconds: 4000),
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .error,
+                                                  ),
+                                                );
+                                              }
+                                            },
+                                            text: 'Submit',
+                                            options: FFButtonOptions(
+                                              width: 500.0,
+                                              height: 44.0,
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              iconPadding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: Colors.black,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color: Colors.white,
+                                                      ),
+                                              elevation: 3.0,
+                                              borderSide: const BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(30.0),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
