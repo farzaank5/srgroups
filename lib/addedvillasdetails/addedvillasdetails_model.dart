@@ -6,6 +6,7 @@ class AddedvillasdetailsModel
     extends FlutterFlowModel<AddedvillasdetailsWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // State field(s) for TextField widget.
   final textFieldKey = GlobalKey();
   FocusNode? textFieldFocusNode;
@@ -20,6 +21,7 @@ class AddedvillasdetailsModel
 
   @override
   void dispose() {
+    unfocusNode.dispose();
     textFieldFocusNode?.dispose();
   }
 

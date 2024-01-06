@@ -98,295 +98,301 @@ class _BookingDetailsWidgetState extends State<BookingDetailsWidget> {
             centerTitle: false,
             elevation: 0.0,
           ),
-          body: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
-                        child: Text(
-                          'Booking Details',
-                          style: FlutterFlowTheme.of(context).headlineMedium,
+          body: SafeArea(
+            top: true,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 1.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Booking Details',
+                            style: FlutterFlowTheme.of(context).headlineMedium,
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 12.0, 0.0, 0.0),
-                        child: Text(
-                          bookingDetailsTotalBookingRecord.nameofVilla,
-                          style: FlutterFlowTheme.of(context).headlineMedium,
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 12.0, 0.0, 0.0),
+                          child: Text(
+                            bookingDetailsTotalBookingRecord.nameofVilla,
+                            style: FlutterFlowTheme.of(context).headlineMedium,
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
-                        child: Text(
-                          bookingDetailsTotalBookingRecord.location,
-                          style: FlutterFlowTheme.of(context).labelMedium,
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 8.0, 0.0, 0.0),
+                          child: Text(
+                            bookingDetailsTotalBookingRecord.location,
+                            style: FlutterFlowTheme.of(context).labelMedium,
+                          ),
                         ),
-                      ),
-                      Divider(
-                        height: 36.0,
-                        thickness: 1.0,
-                        color: FlutterFlowTheme.of(context).alternate,
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Adults',
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
-                            Text(
-                              bookingDetailsTotalBookingRecord.maxAdult
-                                  .toString(),
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            ),
-                          ],
+                        Divider(
+                          height: 36.0,
+                          thickness: 1.0,
+                          color: FlutterFlowTheme.of(context).alternate,
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Childrens',
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
-                            Text(
-                              bookingDetailsTotalBookingRecord.maxChildren
-                                  .toString(),
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Contact number',
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
-                            Text(
-                              bookingDetailsTotalBookingRecord.contactinfo
-                                  .toString(),
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Verification ID',
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
-                            Text(
-                              bookingDetailsTotalBookingRecord.verificationID
-                                  .toString(),
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Guest name',
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
-                            Text(
-                              bookingDetailsTotalBookingRecord.leadGuest,
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Booked by',
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
-                            Text(
-                              '${bookingDetailsTotalBookingRecord.employeeName} ${bookingDetailsTotalBookingRecord.emplastName}',
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Employee Earning',
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
-                            Text(
-                              formatNumber(
-                                bookingDetailsTotalBookingRecord
-                                    .employeeCommision,
-                                formatType: FormatType.decimal,
-                                decimalType: DecimalType.periodDecimal,
-                                currency: 'Rs.',
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Adults',
+                                style: FlutterFlowTheme.of(context).labelMedium,
                               ),
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Profit  Made',
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
-                            Text(
-                              formatNumber(
-                                bookingDetailsTotalBookingRecord.profit,
-                                formatType: FormatType.decimal,
-                                decimalType: DecimalType.periodDecimal,
-                                currency: 'Rs.',
+                              Text(
+                                bookingDetailsTotalBookingRecord.maxAdult
+                                    .toString(),
+                                style: FlutterFlowTheme.of(context).bodyLarge,
                               ),
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Check in date',
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
-                            Text(
-                              dateTimeFormat('yMMMd',
-                                  bookingDetailsTotalBookingRecord.startDate!),
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Check out date',
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
-                            Text(
-                              dateTimeFormat('yMMMd',
-                                  bookingDetailsTotalBookingRecord.endDate!),
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 20.0, 24.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Total Price',
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineSmall
-                                  .override(
-                                    fontFamily: 'Outfit',
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                            ),
-                            Text(
-                              formatNumber(
-                                bookingDetailsTotalBookingRecord.price,
-                                formatType: FormatType.decimal,
-                                decimalType: DecimalType.periodDecimal,
-                                currency: 'Rs.',
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Childrens',
+                                style: FlutterFlowTheme.of(context).labelMedium,
                               ),
-                              style: FlutterFlowTheme.of(context).displaySmall,
-                            ),
-                          ],
+                              Text(
+                                bookingDetailsTotalBookingRecord.maxChildren
+                                    .toString(),
+                                style: FlutterFlowTheme.of(context).bodyLarge,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Contact number',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              Text(
+                                bookingDetailsTotalBookingRecord.contactinfo
+                                    .toString(),
+                                style: FlutterFlowTheme.of(context).bodyLarge,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Verification ID',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              Text(
+                                bookingDetailsTotalBookingRecord.verificationID
+                                    .toString(),
+                                style: FlutterFlowTheme.of(context).bodyLarge,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Guest name',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              Text(
+                                bookingDetailsTotalBookingRecord.leadGuest,
+                                style: FlutterFlowTheme.of(context).bodyLarge,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Booked by',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              Text(
+                                '${bookingDetailsTotalBookingRecord.employeeName} ${bookingDetailsTotalBookingRecord.emplastName}',
+                                style: FlutterFlowTheme.of(context).bodyLarge,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Employee Earning',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              Text(
+                                formatNumber(
+                                  bookingDetailsTotalBookingRecord
+                                      .employeeCommision,
+                                  formatType: FormatType.decimal,
+                                  decimalType: DecimalType.periodDecimal,
+                                  currency: 'Rs.',
+                                ),
+                                style: FlutterFlowTheme.of(context).bodyLarge,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Profit  Made',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              Text(
+                                formatNumber(
+                                  bookingDetailsTotalBookingRecord.profit,
+                                  formatType: FormatType.decimal,
+                                  decimalType: DecimalType.periodDecimal,
+                                  currency: 'Rs.',
+                                ),
+                                style: FlutterFlowTheme.of(context).bodyLarge,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Check in date',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              Text(
+                                dateTimeFormat(
+                                    'yMMMd',
+                                    bookingDetailsTotalBookingRecord
+                                        .startDate!),
+                                style: FlutterFlowTheme.of(context).bodyLarge,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Check out date',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              Text(
+                                dateTimeFormat('yMMMd',
+                                    bookingDetailsTotalBookingRecord.endDate!),
+                                style: FlutterFlowTheme.of(context).bodyLarge,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 20.0, 24.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Total Price',
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                              ),
+                              Text(
+                                formatNumber(
+                                  bookingDetailsTotalBookingRecord.price,
+                                  formatType: FormatType.decimal,
+                                  decimalType: DecimalType.periodDecimal,
+                                  currency: 'Rs.',
+                                ),
+                                style:
+                                    FlutterFlowTheme.of(context).displaySmall,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.sizeOf(context).width * 1.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).primary,
+                    boxShadow: const [
+                      BoxShadow(
+                        blurRadius: 4.0,
+                        color: Color(0x55000000),
+                        offset: Offset(0.0, 2.0),
+                      )
                     ],
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(0.0),
+                      bottomRight: Radius.circular(0.0),
+                      topLeft: Radius.circular(16.0),
+                      topRight: Radius.circular(16.0),
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                width: MediaQuery.sizeOf(context).width * 1.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primary,
-                  boxShadow: const [
-                    BoxShadow(
-                      blurRadius: 4.0,
-                      color: Color(0x55000000),
-                      offset: Offset(0.0, 2.0),
-                    )
-                  ],
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(0.0),
-                    bottomRight: Radius.circular(0.0),
-                    topLeft: Radius.circular(16.0),
-                    topRight: Radius.circular(16.0),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

@@ -115,16 +115,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const VillaslistWidget(),
         ),
         FFRoute(
-          name: 'villasDetails',
-          path: '/villasDetails',
-          builder: (context, params) => VillasDetailsWidget(
-            placeRef: params.getParam(
-                'placeRef', ParamType.DocumentReference, false, ['villas']),
-            bookingRef: params.getParam('bookingRef',
-                ParamType.DocumentReference, false, ['users', 'bookings']),
-          ),
-        ),
-        FFRoute(
           name: 'admin_profile',
           path: '/adminProfile',
           builder: (context, params) => const AdminProfileWidget(),
