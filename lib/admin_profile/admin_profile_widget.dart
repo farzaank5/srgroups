@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -527,7 +528,7 @@ class _AdminProfileWidgetState extends State<AdminProfileWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed('AllBookings');
+                      context.pushNamed('totalBookingsCopy');
                     },
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -537,7 +538,7 @@ class _AdminProfileWidgetState extends State<AdminProfileWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Text(
-                              'All Bookings',
+                              'Cancel Bookings',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -579,7 +580,12 @@ class _AdminProfileWidgetState extends State<AdminProfileWidget> {
                               20.0, 0.0, 20.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              context.pushNamed('Adminloginpage');
+                              GoRouter.of(context).prepareAuthEvent();
+                              await authManager.signOut();
+                              GoRouter.of(context).clearRedirectLocation();
+
+                              context.pushNamedAuth(
+                                  'AdminloginpageCopy', context.mounted);
                             },
                             text: 'Log Out',
                             options: FFButtonOptions(

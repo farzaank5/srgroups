@@ -81,6 +81,11 @@ class UsersRecord extends FirestoreRecord {
   double get currentMonthEarning => _currentMonthEarning ?? 0.0;
   bool hasCurrentMonthEarning() => _currentMonthEarning != null;
 
+  // "code" field.
+  int? _code;
+  int get code => _code ?? 0;
+  bool hasCode() => _code != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -96,6 +101,7 @@ class UsersRecord extends FirestoreRecord {
     _loginpassword = snapshotData['loginpassword'] as String?;
     _currentMonthEarning =
         castToType<double>(snapshotData['currentMonthEarning']);
+    _code = castToType<int>(snapshotData['code']);
   }
 
   static CollectionReference get collection =>
@@ -144,6 +150,7 @@ Map<String, dynamic> createUsersRecordData({
   double? earnings,
   String? loginpassword,
   double? currentMonthEarning,
+  int? code,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -159,6 +166,7 @@ Map<String, dynamic> createUsersRecordData({
       'earnings': earnings,
       'loginpassword': loginpassword,
       'currentMonthEarning': currentMonthEarning,
+      'code': code,
     }.withoutNulls,
   );
 
@@ -183,7 +191,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.aadharnumber == e2?.aadharnumber &&
         e1?.earnings == e2?.earnings &&
         e1?.loginpassword == e2?.loginpassword &&
-        e1?.currentMonthEarning == e2?.currentMonthEarning;
+        e1?.currentMonthEarning == e2?.currentMonthEarning &&
+        e1?.code == e2?.code;
   }
 
   @override
@@ -200,7 +209,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.aadharnumber,
         e?.earnings,
         e?.loginpassword,
-        e?.currentMonthEarning
+        e?.currentMonthEarning,
+        e?.code
       ]);
 
   @override

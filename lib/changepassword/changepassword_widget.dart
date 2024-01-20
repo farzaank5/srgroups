@@ -178,6 +178,7 @@ class _ChangepasswordWidgetState extends State<ChangepasswordWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
                             child: SingleChildScrollView(
+                              primary: false,
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,

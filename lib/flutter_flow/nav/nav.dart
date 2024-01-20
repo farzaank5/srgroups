@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
+import '/backend/push_notifications/push_notifications_handler.dart'
+    show PushNotificationsHandler;
 import '/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -72,14 +74,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
           ? const AdminDashboardWidget()
-          : const AdminloginpageWidget(),
+          : const AdminloginpageCopyWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
               ? const AdminDashboardWidget()
-              : const AdminloginpageWidget(),
+              : const AdminloginpageCopyWidget(),
         ),
         FFRoute(
           name: 'Adminloginpage',
@@ -173,6 +175,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'GuestInfo',
           path: '/guestInfo',
           builder: (context, params) => const GuestInfoWidget(),
+        ),
+        FFRoute(
+          name: 'AdminloginpageCopy',
+          path: '/adminloginpageCopy',
+          builder: (context, params) => const AdminloginpageCopyWidget(),
+        ),
+        FFRoute(
+          name: 'totalBookingsCopy',
+          path: '/totalBookingsCopy',
+          builder: (context, params) => const TotalBookingsCopyWidget(),
+        ),
+        FFRoute(
+          name: 'cancelbooking',
+          path: '/cancelbooking',
+          builder: (context, params) => CancelbookingWidget(
+            placeRef: params.getParam(
+                'placeRef', ParamType.DocumentReference, false, ['villas']),
+            totalbookingRef: params.getParam('totalbookingRef',
+                ParamType.DocumentReference, false, ['users', 'bookings']),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -339,7 +361,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/adminloginpage';
+            return '/adminloginpageCopy';
           }
           return null;
         },
@@ -359,7 +381,7 @@ class FFRoute {
                     fit: BoxFit.fitHeight,
                   ),
                 )
-              : page;
+              : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition

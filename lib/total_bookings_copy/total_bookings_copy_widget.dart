@@ -6,21 +6,21 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'total_bookings_model.dart';
-export 'total_bookings_model.dart';
+import 'total_bookings_copy_model.dart';
+export 'total_bookings_copy_model.dart';
 
-class TotalBookingsWidget extends StatefulWidget {
-  const TotalBookingsWidget({super.key});
+class TotalBookingsCopyWidget extends StatefulWidget {
+  const TotalBookingsCopyWidget({super.key});
 
   @override
-  _TotalBookingsWidgetState createState() => _TotalBookingsWidgetState();
+  _TotalBookingsCopyWidgetState createState() =>
+      _TotalBookingsCopyWidgetState();
 }
 
-class _TotalBookingsWidgetState extends State<TotalBookingsWidget>
+class _TotalBookingsCopyWidgetState extends State<TotalBookingsCopyWidget>
     with TickerProviderStateMixin {
-  late TotalBookingsModel _model;
+  late TotalBookingsCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -49,7 +49,7 @@ class _TotalBookingsWidgetState extends State<TotalBookingsWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TotalBookingsModel());
+    _model = createModel(context, () => TotalBookingsCopyModel());
 
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -134,7 +134,7 @@ class _TotalBookingsWidgetState extends State<TotalBookingsWidget>
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 0.0, 0.0),
                               child: Text(
-                                'Total Bookings',
+                                'Cancel Bookings',
                                 style:
                                     FlutterFlowTheme.of(context).headlineMedium,
                               ),
@@ -142,8 +142,8 @@ class _TotalBookingsWidgetState extends State<TotalBookingsWidget>
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 16.0, 0.0),
-                              child: FaIcon(
-                                FontAwesomeIcons.book,
+                              child: Icon(
+                                Icons.free_cancellation,
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 size: 35.0,
                               ),
@@ -167,12 +167,8 @@ class _TotalBookingsWidgetState extends State<TotalBookingsWidget>
                           child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
-                            child: FutureBuilder<List<TotalBookingRecord>>(
-                              future: queryTotalBookingRecordOnce(
-                                queryBuilder: (totalBookingRecord) =>
-                                    totalBookingRecord.orderBy('createdtime',
-                                        descending: true),
-                              ),
+                            child: FutureBuilder<List<BookingsRecord>>(
+                              future: queryBookingsRecordOnce(),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -189,18 +185,18 @@ class _TotalBookingsWidgetState extends State<TotalBookingsWidget>
                                     ),
                                   );
                                 }
-                                List<TotalBookingRecord>
-                                    passedbookingTotalBookingRecordList =
+                                List<BookingsRecord>
+                                    passedbookingBookingsRecordList =
                                     snapshot.data!;
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
                                   primary: false,
                                   scrollDirection: Axis.vertical,
-                                  itemCount: passedbookingTotalBookingRecordList
-                                      .length,
+                                  itemCount:
+                                      passedbookingBookingsRecordList.length,
                                   itemBuilder: (context, passedbookingIndex) {
-                                    final passedbookingTotalBookingRecord =
-                                        passedbookingTotalBookingRecordList[
+                                    final passedbookingBookingsRecord =
+                                        passedbookingBookingsRecordList[
                                             passedbookingIndex];
                                     return Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
@@ -212,15 +208,15 @@ class _TotalBookingsWidgetState extends State<TotalBookingsWidget>
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pushNamed(
-                                            'bookingDetails',
+                                            'cancelbooking',
                                             queryParameters: {
                                               'placeRef': serializeParam(
-                                                passedbookingTotalBookingRecord
+                                                passedbookingBookingsRecord
                                                     .placeRef,
                                                 ParamType.DocumentReference,
                                               ),
                                               'totalbookingRef': serializeParam(
-                                                passedbookingTotalBookingRecord
+                                                passedbookingBookingsRecord
                                                     .reference,
                                                 ParamType.DocumentReference,
                                               ),
@@ -280,8 +276,8 @@ class _TotalBookingsWidgetState extends State<TotalBookingsWidget>
                                                                 const AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
-                                                              passedbookingTotalBookingRecord
-                                                                  .nameofVilla,
+                                                              passedbookingBookingsRecord
+                                                                  .name,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -314,7 +310,7 @@ class _TotalBookingsWidgetState extends State<TotalBookingsWidget>
                                                                     0.0,
                                                                     10.0),
                                                         child: Text(
-                                                          '${dateTimeFormat('yMMMd', passedbookingTotalBookingRecord.startDate)}-${dateTimeFormat('yMMMd', passedbookingTotalBookingRecord.endDate)}',
+                                                          '${dateTimeFormat('yMMMd', passedbookingBookingsRecord.startDate)}-${dateTimeFormat('yMMMd', passedbookingBookingsRecord.endDate)}',
                                                           textAlign:
                                                               TextAlign.start,
                                                           style: FlutterFlowTheme

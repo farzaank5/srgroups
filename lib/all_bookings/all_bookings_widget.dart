@@ -188,6 +188,7 @@ class _AllBookingsWidgetState extends State<AllBookingsWidget>
                             .map((e) => e)
                             .toList();
                         return SingleChildScrollView(
+                          primary: false,
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: List.generate(allbookings.length,

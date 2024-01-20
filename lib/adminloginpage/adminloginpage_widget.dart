@@ -125,20 +125,35 @@ class _AdminloginpageWidgetState extends State<AdminloginpageWidget> {
                                   alignment: const AlignmentDirectional(-1.0, 0.0),
                                   child: Align(
                                     alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 100.0, 0.0, 0.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        child: Image.asset(
-                                          'assets/images/Screenshot_2023-10-25_at_11.10.20_AM-removebg-preview.png',
-                                          width: 157.0,
-                                          height: 239.0,
-                                          fit: BoxFit.cover,
-                                        ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: Image.asset(
+                                        'assets/images/Screenshot_2023-10-25_at_11.10.20_AM-removebg-preview.png',
+                                        width: 157.0,
+                                        height: 148.0,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Text(
+                                  'Admin Login',
+                                  style:
+                                      FlutterFlowTheme.of(context).displaySmall,
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 24.0),
+                                  child: Text(
+                                    'Fill the required passcode to get access ',
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium,
                                   ),
                                 ),
                               ),
@@ -152,29 +167,6 @@ class _AdminloginpageWidgetState extends State<AdminloginpageWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
-                                        child: Text(
-                                          'Admin Login',
-                                          style: FlutterFlowTheme.of(context)
-                                              .displaySmall,
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 12.0, 0.0, 24.0),
-                                          child: Text(
-                                            'Fill the required passcode to get access ',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelMedium,
-                                          ),
-                                        ),
-                                      ),
                                       PinCodeTextField(
                                         autoDisposeControllers: false,
                                         appContext: context,

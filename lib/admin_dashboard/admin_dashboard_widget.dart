@@ -607,170 +607,195 @@ class _AdminDashboardWidgetState extends State<AdminDashboardWidget>
                         ).animateOnPageLoad(
                             animationsMap['textOnPageLoadAnimation']!),
                       ),
-                      Container(
-                        height: 700.0,
-                        decoration: const BoxDecoration(),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 24.0),
-                          child: StreamBuilder<List<TotalBookingRecord>>(
-                            stream: queryTotalBookingRecord(
-                              queryBuilder: (totalBookingRecord) =>
-                                  totalBookingRecord.where(
-                                'endDate',
-                                isGreaterThanOrEqualTo: getCurrentTimestamp,
-                              ),
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return const Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        Colors.black,
-                                      ),
+                      SingleChildScrollView(
+                        primary: false,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              height: 700.0,
+                              decoration: const BoxDecoration(),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 24.0),
+                                child: StreamBuilder<List<TotalBookingRecord>>(
+                                  stream: queryTotalBookingRecord(
+                                    queryBuilder: (totalBookingRecord) =>
+                                        totalBookingRecord.where(
+                                      'endDate',
+                                      isGreaterThanOrEqualTo:
+                                          getCurrentTimestamp,
                                     ),
                                   ),
-                                );
-                              }
-                              List<TotalBookingRecord>
-                                  listViewTotalBookingRecordList =
-                                  snapshot.data!;
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                primary: false,
-                                scrollDirection: Axis.vertical,
-                                itemCount:
-                                    listViewTotalBookingRecordList.length,
-                                itemBuilder: (context, listViewIndex) {
-                                  final listViewTotalBookingRecord =
-                                      listViewTotalBookingRecordList[
-                                          listViewIndex];
-                                  return Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 12.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed(
-                                          'bookingDetails',
-                                          queryParameters: {
-                                            'placeRef': serializeParam(
-                                              listViewTotalBookingRecord
-                                                  .placeRef,
-                                              ParamType.DocumentReference,
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return const Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              Colors.black,
                                             ),
-                                            'totalbookingRef': serializeParam(
-                                              listViewTotalBookingRecord
-                                                  .reference,
-                                              ParamType.DocumentReference,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-                                      },
-                                      child: Container(
-                                        width: double.infinity,
-                                        constraints: const BoxConstraints(
-                                          maxWidth: 570.0,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                            width: 2.0,
                                           ),
                                         ),
-                                        child: Padding(
+                                      );
+                                    }
+                                    List<TotalBookingRecord>
+                                        listViewTotalBookingRecordList =
+                                        snapshot.data!;
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount:
+                                          listViewTotalBookingRecordList.length,
+                                      itemBuilder: (context, listViewIndex) {
+                                        final listViewTotalBookingRecord =
+                                            listViewTotalBookingRecordList[
+                                                listViewIndex];
+                                        return Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 12.0, 16.0, 12.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Padding(
+                                                  16.0, 0.0, 16.0, 12.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                'bookingDetails',
+                                                queryParameters: {
+                                                  'placeRef': serializeParam(
+                                                    listViewTotalBookingRecord
+                                                        .placeRef,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                  'totalbookingRef':
+                                                      serializeParam(
+                                                    listViewTotalBookingRecord
+                                                        .reference,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: Container(
+                                              width: double.infinity,
+                                              constraints: const BoxConstraints(
+                                                maxWidth: 570.0,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                border: Border.all(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  width: 2.0,
+                                                ),
+                                              ),
+                                              child: Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Column(
+                                                        16.0, 12.0, 16.0, 12.0),
+                                                child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   children: [
-                                                    Text(
-                                                      listViewTotalBookingRecord
-                                                          .nameofVilla,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyLarge
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
-                                                    ),
                                                     Padding(
                                                       padding:
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
-                                                                  4.0,
                                                                   0.0,
+                                                                  12.0,
                                                                   0.0),
-                                                      child: Text(
-                                                        '${dateTimeFormat('yMMMd', listViewTotalBookingRecord.startDate)} - ${dateTimeFormat('yMMMd', listViewTotalBookingRecord.endDate)}',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .labelMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Outfit',
-                                                              fontSize: 12.0,
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            listViewTotalBookingRecord
+                                                                .nameofVilla,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Plus Jakarta Sans',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        4.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              '${dateTimeFormat('yMMMd', listViewTotalBookingRecord.startDate)} - ${dateTimeFormat('yMMMd', listViewTotalBookingRecord.endDate)}',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Outfit',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                  ),
                                                             ),
+                                                          ),
+                                                        ],
                                                       ),
+                                                    ),
+                                                    Text(
+                                                      'Rs:${listViewTotalBookingRecord.price.toString()}',
+                                                      textAlign: TextAlign.end,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .headlineSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                'Outfit',
+                                                            fontSize: 16.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
                                                     ),
                                                   ],
                                                 ),
                                               ),
-                                              Text(
-                                                'Rs:${listViewTotalBookingRecord.price.toString()}',
-                                                textAlign: TextAlign.end,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineSmall
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                              ),
-                                            ],
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ).animateOnPageLoad(animationsMap[
-                                  'listViewOnPageLoadAnimation']!);
-                            },
-                          ),
+                                        );
+                                      },
+                                    ).animateOnPageLoad(animationsMap[
+                                        'listViewOnPageLoadAnimation']!);
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],

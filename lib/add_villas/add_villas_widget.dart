@@ -146,6 +146,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 10.0),
                             child: SingleChildScrollView(
+                              primary: false,
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -174,6 +175,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             20.0, 0.0, 20.0, 0.0),
                                         child: SingleChildScrollView(
+                                          primary: false,
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:

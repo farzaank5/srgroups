@@ -936,32 +936,8 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                             photoUrl: _model.uploadedFileUrl,
                                             loginpassword:
                                                 _model.passwordController.text,
+                                            code: 2,
                                           ));
-
-                                          await EmployeeRecord.collection
-                                              .doc()
-                                              .set(createEmployeeRecordData(
-                                                firstname:
-                                                    _model.nameController1.text,
-                                                lastname:
-                                                    _model.nameController2.text,
-                                                emailID: _model
-                                                    .emailAddressController
-                                                    .text,
-                                                uid: currentUserUid,
-                                                photoUrl:
-                                                    _model.uploadedFileUrl,
-                                                phonenumber: _model
-                                                    .phoneNumberController.text,
-                                                aadharnumber: int.tryParse(
-                                                    _model
-                                                        .aadharController.text),
-                                                loginpasswords: _model
-                                                    .passwordConfirmController
-                                                    .text,
-                                                createdTime:
-                                                    getCurrentTimestamp,
-                                              ));
                                           context.safePop();
                                         },
                                         text: 'Add',

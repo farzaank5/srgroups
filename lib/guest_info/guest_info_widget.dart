@@ -188,6 +188,7 @@ class _GuestInfoWidgetState extends State<GuestInfoWidget>
                             .map((e) => e)
                             .toList();
                         return SingleChildScrollView(
+                          primary: false,
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: List.generate(allbookings.length,

@@ -19,3 +19,8 @@ export '/total_bookings/total_bookings_widget.dart' show TotalBookingsWidget;
 export '/employee_details/employee_details_widget.dart'
     show EmployeeDetailsWidget;
 export '/guest_info/guest_info_widget.dart' show GuestInfoWidget;
+export '/adminloginpage_copy/adminloginpage_copy_widget.dart'
+    show AdminloginpageCopyWidget;
+export '/total_bookings_copy/total_bookings_copy_widget.dart'
+    show TotalBookingsCopyWidget;
+export '/cancelbooking/cancelbooking_widget.dart' show CancelbookingWidget;

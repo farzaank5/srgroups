@@ -5,15 +5,11 @@ import '../auth/firebase_auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/util/firestore_util.dart';
 
-import 'schema/images_record.dart';
 import 'schema/users_record.dart';
 import 'schema/villas_record.dart';
 import 'schema/bookings_record.dart';
 import 'schema/total_booking_record.dart';
 import 'schema/admin_logincode_record.dart';
-import 'schema/guest_info_record.dart';
-import 'schema/employee_record.dart';
-import 'schema/books_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -21,52 +17,11 @@ export 'schema/index.dart';
 export 'schema/util/firestore_util.dart';
 export 'schema/util/schema_util.dart';
 
-export 'schema/images_record.dart';
 export 'schema/users_record.dart';
 export 'schema/villas_record.dart';
 export 'schema/bookings_record.dart';
 export 'schema/total_booking_record.dart';
 export 'schema/admin_logincode_record.dart';
-export 'schema/guest_info_record.dart';
-export 'schema/employee_record.dart';
-export 'schema/books_record.dart';
-
-/// Functions to query ImagesRecords (as a Stream and as a Future).
-Future<int> queryImagesRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      ImagesRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<ImagesRecord>> queryImagesRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      ImagesRecord.collection,
-      ImagesRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<ImagesRecord>> queryImagesRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      ImagesRecord.collection,
-      ImagesRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -251,123 +206,6 @@ Future<List<AdminLogincodeRecord>> queryAdminLogincodeRecordOnce({
     queryCollectionOnce(
       AdminLogincodeRecord.collection,
       AdminLogincodeRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-/// Functions to query GuestInfoRecords (as a Stream and as a Future).
-Future<int> queryGuestInfoRecordCount({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      GuestInfoRecord.collection(parent),
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<GuestInfoRecord>> queryGuestInfoRecord({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      GuestInfoRecord.collection(parent),
-      GuestInfoRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<GuestInfoRecord>> queryGuestInfoRecordOnce({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      GuestInfoRecord.collection(parent),
-      GuestInfoRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-/// Functions to query EmployeeRecords (as a Stream and as a Future).
-Future<int> queryEmployeeRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      EmployeeRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<EmployeeRecord>> queryEmployeeRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      EmployeeRecord.collection,
-      EmployeeRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<EmployeeRecord>> queryEmployeeRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      EmployeeRecord.collection,
-      EmployeeRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-/// Functions to query BooksRecords (as a Stream and as a Future).
-Future<int> queryBooksRecordCount({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      BooksRecord.collection(parent),
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<BooksRecord>> queryBooksRecord({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      BooksRecord.collection(parent),
-      BooksRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<BooksRecord>> queryBooksRecordOnce({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      BooksRecord.collection(parent),
-      BooksRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

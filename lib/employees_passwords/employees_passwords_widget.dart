@@ -110,6 +110,7 @@ class _EmployeesPasswordsWidgetState extends State<EmployeesPasswordsWidget>
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
+            primary: false,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,206 +157,214 @@ class _EmployeesPasswordsWidgetState extends State<EmployeesPasswordsWidget>
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        height: 1000.0,
-                        decoration: const BoxDecoration(),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 12.0, 0.0, 0.0),
-                          child: FutureBuilder<List<UsersRecord>>(
-                            future: queryUsersRecordOnce(
-                              queryBuilder: (usersRecord) => usersRecord
-                                  .orderBy('created_time', descending: true),
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return const Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        Colors.black,
+                  child: SingleChildScrollView(
+                    primary: false,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          height: 1000.0,
+                          decoration: const BoxDecoration(),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
+                            child: FutureBuilder<List<UsersRecord>>(
+                              future: queryUsersRecordOnce(
+                                queryBuilder: (usersRecord) => usersRecord
+                                    .orderBy('created_time', descending: true),
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return const Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          Colors.black,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              }
-                              List<UsersRecord> passedbookingUsersRecordList =
-                                  snapshot.data!;
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                primary: false,
-                                scrollDirection: Axis.vertical,
-                                itemCount: passedbookingUsersRecordList.length,
-                                itemBuilder: (context, passedbookingIndex) {
-                                  final passedbookingUsersRecord =
-                                      passedbookingUsersRecordList[
-                                          passedbookingIndex];
-                                  return Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 8.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 103.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: const [
-                                          BoxShadow(
-                                            blurRadius: 4.0,
-                                            color: Color(0x520E151B),
-                                            offset: Offset(0.0, 2.0),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 8.0, 10.0, 8.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          -1.0, 0.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
-                                                        child: Image.network(
-                                                          passedbookingUsersRecord
-                                                              .photoUrl,
-                                                          width: 85.0,
-                                                          height: 85.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Align(
-                                              alignment: const AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Column(
+                                  );
+                                }
+                                List<UsersRecord> passedbookingUsersRecordList =
+                                    snapshot.data!;
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  primary: false,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount:
+                                      passedbookingUsersRecordList.length,
+                                  itemBuilder: (context, passedbookingIndex) {
+                                    final passedbookingUsersRecord =
+                                        passedbookingUsersRecordList[
+                                            passedbookingIndex];
+                                    return Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 8.0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 103.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              blurRadius: 4.0,
+                                              color: Color(0x520E151B),
+                                              offset: Offset(0.0, 2.0),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      8.0, 8.0, 10.0, 8.0),
+                                              child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
-                                                  Flexible(
-                                                    child: Text(
-                                                      '${passedbookingUsersRecord.displayName} ${passedbookingUsersRecord.lastName}',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            fontSize: 16.0,
-                                                            fontWeight:
-                                                                FontWeight.w500,
+                                                  Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                          child: Image.network(
+                                                            passedbookingUsersRecord
+                                                                .photoUrl,
+                                                            width: 85.0,
+                                                            height: 85.0,
+                                                            fit: BoxFit.cover,
                                                           ),
-                                                    ),
-                                                  ),
-                                                  Flexible(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  5.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        passedbookingUsersRecord
-                                                            .email,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Plus Jakarta Sans',
-                                                              fontSize: 12.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .normal,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Flexible(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  5.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        passedbookingUsersRecord
-                                                            .loginpassword,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Plus Jakarta Sans',
-                                                              fontSize: 12.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .normal,
-                                                            ),
-                                                      ),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Expanded(
+                                              child: Align(
+                                                alignment: const AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Flexible(
+                                                      child: Text(
+                                                        '${passedbookingUsersRecord.displayName} ${passedbookingUsersRecord.lastName}',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                              fontSize: 16.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                    Flexible(
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    5.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          passedbookingUsersRecord
+                                                              .email,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                fontSize: 12.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Flexible(
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    5.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          passedbookingUsersRecord
+                                                              .loginpassword,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                fontSize: 12.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                },
-                              ).animateOnPageLoad(animationsMap[
-                                  'listViewOnPageLoadAnimation']!);
-                            },
+                                    );
+                                  },
+                                ).animateOnPageLoad(animationsMap[
+                                    'listViewOnPageLoadAnimation']!);
+                              },
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],
