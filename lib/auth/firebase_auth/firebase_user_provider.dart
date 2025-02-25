@@ -5,10 +5,9 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class SrAdminFirebaseUser extends BaseAuthUser {
-  SrAdminFirebaseUser(this.user);
+class SRAdminFirebaseUser extends BaseAuthUser {
+  SRAdminFirebaseUser(this.user);
   User? user;
-  @override
   bool get loggedIn => user != null;
 
   @override
@@ -33,6 +32,11 @@ class SrAdminFirebaseUser extends BaseAuthUser {
   }
 
   @override
+  Future? updatePassword(String newPassword) async {
+    await user?.updatePassword(newPassword);
+  }
+
+  @override
   Future? sendEmailVerification() => user?.sendEmailVerification();
 
   @override
@@ -54,17 +58,17 @@ class SrAdminFirebaseUser extends BaseAuthUser {
 
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
-  static BaseAuthUser fromFirebaseUser(User? user) => SrAdminFirebaseUser(user);
+  static BaseAuthUser fromFirebaseUser(User? user) => SRAdminFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> srAdminFirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> sRAdminFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = SrAdminFirebaseUser(user);
+        currentUser = SRAdminFirebaseUser(user);
         return currentUser!;
       },
     );

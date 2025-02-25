@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'addedvillasdetails_model.dart';
 export 'addedvillasdetails_model.dart';
 
@@ -18,8 +17,11 @@ class AddedvillasdetailsWidget extends StatefulWidget {
 
   final DocumentReference? placeRef;
 
+  static String routeName = 'addedvillasdetails';
+  static String routePath = '/addedvillasdetails';
+
   @override
-  _AddedvillasdetailsWidgetState createState() =>
+  State<AddedvillasdetailsWidget> createState() =>
       _AddedvillasdetailsWidgetState();
 }
 
@@ -45,17 +47,6 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return StreamBuilder<VillasRecord>(
       stream: VillasRecord.getDocument(widget.placeRef!),
       builder: (context, snapshot) {
@@ -63,7 +54,7 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
         if (!snapshot.hasData) {
           return Scaffold(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-            body: const Center(
+            body: Center(
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
@@ -76,11 +67,14 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
             ),
           );
         }
+
         final addedvillasdetailsVillasRecord = snapshot.data!;
+
         return GestureDetector(
-          onTap: () => _model.unfocusNode.canRequestFocus
-              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-              : FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -103,22 +97,25 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
               ),
               title: Text(
                 'Details',
-                style: FlutterFlowTheme.of(context).headlineMedium,
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Outfit',
+                      letterSpacing: 0.0,
+                    ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 0.0,
             ),
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -126,9 +123,9 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 20.0, 20.0, 0.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -148,30 +145,34 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             23.0, 12.0, 0.0, 0.0),
                                         child: Text(
                                           addedvillasdetailsVillasRecord
                                               .displayName,
                                           style: FlutterFlowTheme.of(context)
-                                              .headlineMedium,
+                                              .headlineMedium
+                                              .override(
+                                                fontFamily: 'Outfit',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Align(
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                 -1.0, -1.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       23.0, 8.0, 0.0, 0.0),
                                               child: InkWell(
@@ -198,7 +199,7 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                                               .primaryBackground,
                                                         ),
                                                       ),
-                                                      duration: const Duration(
+                                                      duration: Duration(
                                                           milliseconds: 4000),
                                                       backgroundColor:
                                                           FlutterFlowTheme.of(
@@ -212,7 +213,11 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                                       .reference.id,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                 ),
                                               ),
                                             ),
@@ -230,7 +235,7 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                               color: FlutterFlowTheme.of(context).alternate,
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 24.0, 24.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -240,7 +245,11 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                   Text(
                                     'Price Per Night',
                                     style: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                   Text(
                                     formatNumber(
@@ -249,14 +258,18 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                       decimalType: DecimalType.automatic,
                                       currency: 'Rs.',
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyLarge,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 24.0, 24.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -266,19 +279,27 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                   Text(
                                     'Max Adult',
                                     style: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                   Text(
                                     addedvillasdetailsVillasRecord.maxAdult
                                         .toString(),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyLarge,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 24.0, 24.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -288,19 +309,27 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                   Text(
                                     'Max Children',
                                     style: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                   Text(
                                     addedvillasdetailsVillasRecord.maxChildren
                                         .toString(),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyLarge,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 24.0, 24.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -310,19 +339,27 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                   Text(
                                     'Employee Percentage',
                                     style: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                   Text(
                                     addedvillasdetailsVillasRecord.employeePer
                                         .toString(),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyLarge,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 24.0, 24.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -332,21 +369,29 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                   Text(
                                     'Location',
                                     style: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                   Text(
                                     addedvillasdetailsVillasRecord.location,
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyLarge,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 10.0, 24.0, 0.0),
                               child: Autocomplete<String>(
-                                initialValue: const TextEditingValue(),
+                                initialValue: TextEditingValue(),
                                 optionsBuilder: (textEditingValue) {
                                   if (textEditingValue.text == '') {
                                     return const Iterable<String>.empty();
@@ -365,9 +410,13 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                     textController: _model.textController!,
                                     options: options.toList(),
                                     onSelected: onSelected,
-                                    textStyle:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                    textHighlightStyle: const TextStyle(),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    textHighlightStyle: TextStyle(),
                                     elevation: 4.0,
                                     optionBackgroundColor:
                                         FlutterFlowTheme.of(context)
@@ -379,7 +428,7 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                   );
                                 },
                                 onSelected: (String selection) {
-                                  setState(() => _model
+                                  safeSetState(() => _model
                                       .textFieldSelectedOption = selection);
                                   FocusScope.of(context).unfocus();
                                 },
@@ -402,11 +451,19 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                     decoration: InputDecoration(
                                       labelText: 'Villa ID',
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Outfit',
+                                            letterSpacing: 0.0,
+                                          ),
                                       hintText: addedvillasdetailsVillasRecord
                                           .placeRef,
                                       hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Outfit',
+                                            letterSpacing: 0.0,
+                                          ),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
@@ -444,8 +501,12 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          letterSpacing: 0.0,
+                                        ),
                                     validator: _model.textControllerValidator
                                         .asValidator(context),
                                   );
@@ -453,9 +514,9 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(1.0, 0.0),
+                              alignment: AlignmentDirectional(1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 10.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -476,9 +537,10 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBtnText,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
-                                        duration: const Duration(milliseconds: 4000),
+                                        duration: Duration(milliseconds: 4000),
                                         backgroundColor:
                                             FlutterFlowTheme.of(context)
                                                 .secondary,
@@ -489,9 +551,9 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                   text: 'Update Villa ID',
                                   options: FFButtonOptions(
                                     height: 30.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -501,6 +563,7 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBtnText,
                                           fontSize: 10.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                         ),
                                     elevation: 3.0,
@@ -515,7 +578,7 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 30.0, 0.0, 20.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
@@ -530,10 +593,11 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                               fontFamily: 'Plus Jakarta Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                                      .primaryBtnText,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
-                                      duration: const Duration(milliseconds: 4000),
+                                      duration: Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .secondary,
@@ -544,11 +608,11 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                 text: 'Delete this villa',
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: const Color(0xFFD73131),
+                                  color: Color(0xFFD73131),
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -556,10 +620,11 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBtnText,
                                         fontSize: 12.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0xFFE92929),
                                     width: 1.0,
                                   ),
@@ -571,14 +636,17 @@ class _AddedvillasdetailsWidgetState extends State<AddedvillasdetailsWidget> {
                               width: MediaQuery.sizeOf(context).width * 1.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).primary,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x55000000),
-                                    offset: Offset(0.0, 2.0),
+                                    offset: Offset(
+                                      0.0,
+                                      2.0,
+                                    ),
                                   )
                                 ],
-                                borderRadius: const BorderRadius.only(
+                                borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(0.0),
                                   bottomRight: Radius.circular(0.0),
                                   topLeft: Radius.circular(16.0),

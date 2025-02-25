@@ -7,12 +7,25 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:585262537421:android:77a43796ac0417ef2a6784",
+        "mobilesdk_app_id": "1:585262537421:android:0dc05eb5fd250f7f2a6784",
         "android_client_info": {
-          "package_name": "com.mycompany.srgroupstays"
+          "package_name": "com.mycompany.sradmin"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "585262537421-u7unel1bh3adq26r1jao94dl3uliaqph.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.sradmin",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "585262537421-50bdggk0ggiq82hbfolhu049u4aepanr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDF57DBGe4rbueY9QUeg-prrP6AT8MrXCA"
@@ -20,7 +33,107 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585262537421-50bdggk0ggiq82hbfolhu049u4aepanr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "585262537421-4urke4qpq141q6n6120u1skn9e1qrb3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.srgroups.emp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585262537421:android:453a4601121fab682a6784",
+        "android_client_info": {
+          "package_name": "com.mycompany.srgroupsadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "585262537421-74qtvbk5tsi2cqaju7gjsrofila9isf4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.srgroupsadmin",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "585262537421-50bdggk0ggiq82hbfolhu049u4aepanr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF57DBGe4rbueY9QUeg-prrP6AT8MrXCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585262537421-50bdggk0ggiq82hbfolhu049u4aepanr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "585262537421-4urke4qpq141q6n6120u1skn9e1qrb3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.srgroups.emp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585262537421:android:77a43796ac0417ef2a6784",
+        "android_client_info": {
+          "package_name": "com.mycompany.srgroupstays"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "585262537421-bh10r84p8n1itj707j7aaacmctcucqc7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.srgroupstays",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "585262537421-50bdggk0ggiq82hbfolhu049u4aepanr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF57DBGe4rbueY9QUeg-prrP6AT8MrXCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585262537421-50bdggk0ggiq82hbfolhu049u4aepanr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "585262537421-4urke4qpq141q6n6120u1skn9e1qrb3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.srgroups.emp"
+              }
+            }
+          ]
         }
       }
     },
@@ -31,7 +144,20 @@
           "package_name": "com.srgroupEmployee"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "585262537421-4iij3mr4auonofj3oggii9m8l2b7nii0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.srgroupEmployee",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "585262537421-50bdggk0ggiq82hbfolhu049u4aepanr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDF57DBGe4rbueY9QUeg-prrP6AT8MrXCA"
@@ -39,7 +165,107 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585262537421-50bdggk0ggiq82hbfolhu049u4aepanr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "585262537421-4urke4qpq141q6n6120u1skn9e1qrb3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.srgroups.emp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585262537421:android:7c44146920b249932a6784",
+        "android_client_info": {
+          "package_name": "com.srgroups.Bookings"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "585262537421-ahuvir909gchaadhsga0klr9d54jhpoc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.srgroups.Bookings",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "585262537421-50bdggk0ggiq82hbfolhu049u4aepanr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF57DBGe4rbueY9QUeg-prrP6AT8MrXCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585262537421-50bdggk0ggiq82hbfolhu049u4aepanr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "585262537421-4urke4qpq141q6n6120u1skn9e1qrb3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.srgroups.emp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585262537421:android:ed3bf85a2ec8a2ee2a6784",
+        "android_client_info": {
+          "package_name": "com.srgroups.emp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "585262537421-sdsqj4ec59k0eg7tl7ubvv6qhd45fsjn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.srgroups.emp",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "585262537421-50bdggk0ggiq82hbfolhu049u4aepanr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF57DBGe4rbueY9QUeg-prrP6AT8MrXCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585262537421-50bdggk0ggiq82hbfolhu049u4aepanr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "585262537421-4urke4qpq141q6n6120u1skn9e1qrb3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.srgroups.emp"
+              }
+            }
+          ]
         }
       }
     }

@@ -25,8 +25,8 @@ List<VillasRecord> getPlaces(
   return searchBool ? searchResults : list;
 }
 
-int? calculateBasePrice(
-  int pricePerNight,
+double? calculateBasePrice(
+  double pricePerNight,
   DateTime startDate,
   DateTime endDate,
 ) {
@@ -86,4 +86,16 @@ double? getMonthlyEarnings(
   }
 
   return monthlyEarnings;
+}
+
+double? calculateSum(List<double>? itemPrice) {
+  // Calclulate Sum of the list privce
+  if (itemPrice == null || itemPrice.isEmpty) {
+    return null;
+  }
+  double sum = 0;
+  for (double price in itemPrice) {
+    sum += price;
+  }
+  return sum;
 }

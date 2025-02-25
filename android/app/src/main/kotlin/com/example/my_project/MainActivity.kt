@@ -1,4 +1,4 @@
-package com.mycompany.srgroupstays
+package com.mycompany.sradmin
 
 import io.flutter.embedding.android.FlutterActivity
 

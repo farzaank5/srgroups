@@ -19,8 +19,13 @@ service cloud.firestore {
       allow create: if request.auth.uid == parent;
       allow read: if true;
       allow write: if request.auth.uid == parent;
-      allow delete: if false;
+      allow delete: if request.auth.uid == parent;
     }
+
+    match /{path=**}/bookings/{document} {
+      allow read: if true;
+    }
+
 
     match /totalBooking/{document} {
       allow create: if true;
@@ -34,11 +39,6 @@ service cloud.firestore {
       allow read: if true;
       allow write: if false;
       allow delete: if true;
-    }
-
-    match /ff_user_push_notifications/{id} {
-      allow read, update, delete: if false;
-      allow create: if /databases/$(database)/documents/users/$(request.auth.uid) == request.resource.data.sender;
     }
   }
 }

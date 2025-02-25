@@ -3,16 +3,15 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class BookingsRecord extends FirestoreRecord {
   BookingsRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -40,11 +39,6 @@ class BookingsRecord extends FirestoreRecord {
   String? _location;
   String get location => _location ?? '';
   bool hasLocation() => _location != null;
-
-  // "Price" field.
-  int? _price;
-  int get price => _price ?? 0;
-  bool hasPrice() => _price != null;
 
   // "placeStringRef" field.
   String? _placeStringRef;
@@ -81,11 +75,6 @@ class BookingsRecord extends FirestoreRecord {
   int get contactInfo => _contactInfo ?? 0;
   bool hasContactInfo() => _contactInfo != null;
 
-  // "VerificationID" field.
-  int? _verificationID;
-  int get verificationID => _verificationID ?? 0;
-  bool hasVerificationID() => _verificationID != null;
-
   // "employee_name" field.
   String? _employeeName;
   String get employeeName => _employeeName ?? '';
@@ -111,6 +100,16 @@ class BookingsRecord extends FirestoreRecord {
   String get gender => _gender ?? '';
   bool hasGender() => _gender != null;
 
+  // "VerificationID" field.
+  String? _verificationID;
+  String get verificationID => _verificationID ?? '';
+  bool hasVerificationID() => _verificationID != null;
+
+  // "Price" field.
+  double? _price;
+  double get price => _price ?? 0.0;
+  bool hasPrice() => _price != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -119,7 +118,6 @@ class BookingsRecord extends FirestoreRecord {
     _endDate = snapshotData['endDate'] as DateTime?;
     _name = snapshotData['name'] as String?;
     _location = snapshotData['location'] as String?;
-    _price = castToType<int>(snapshotData['Price']);
     _placeStringRef = snapshotData['placeStringRef'] as String?;
     _firstname = snapshotData['firstname'] as String?;
     _earnings = castToType<double>(snapshotData['earnings']);
@@ -127,12 +125,13 @@ class BookingsRecord extends FirestoreRecord {
     _maxAdult = castToType<int>(snapshotData['max_adult']);
     _maxChildren = castToType<int>(snapshotData['max_children']);
     _contactInfo = castToType<int>(snapshotData['contactInfo']);
-    _verificationID = castToType<int>(snapshotData['VerificationID']);
     _employeeName = snapshotData['employee_name'] as String?;
     _employeeLastname = snapshotData['employee_lastname'] as String?;
     _profit = castToType<double>(snapshotData['profit']);
     _age = castToType<int>(snapshotData['age']);
     _gender = snapshotData['gender'] as String?;
+    _verificationID = snapshotData['VerificationID'] as String?;
+    _price = castToType<double>(snapshotData['Price']);
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -140,8 +139,8 @@ class BookingsRecord extends FirestoreRecord {
           ? parent.collection('bookings')
           : FirebaseFirestore.instance.collectionGroup('bookings');
 
-  static DocumentReference createDoc(DocumentReference parent) =>
-      parent.collection('bookings').doc();
+  static DocumentReference createDoc(DocumentReference parent, {String? id}) =>
+      parent.collection('bookings').doc(id);
 
   static Stream<BookingsRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map((s) => BookingsRecord.fromSnapshot(s));
@@ -180,7 +179,6 @@ Map<String, dynamic> createBookingsRecordData({
   DateTime? endDate,
   String? name,
   String? location,
-  int? price,
   String? placeStringRef,
   String? firstname,
   double? earnings,
@@ -188,12 +186,13 @@ Map<String, dynamic> createBookingsRecordData({
   int? maxAdult,
   int? maxChildren,
   int? contactInfo,
-  int? verificationID,
   String? employeeName,
   String? employeeLastname,
   double? profit,
   int? age,
   String? gender,
+  String? verificationID,
+  double? price,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -202,7 +201,6 @@ Map<String, dynamic> createBookingsRecordData({
       'endDate': endDate,
       'name': name,
       'location': location,
-      'Price': price,
       'placeStringRef': placeStringRef,
       'firstname': firstname,
       'earnings': earnings,
@@ -210,12 +208,13 @@ Map<String, dynamic> createBookingsRecordData({
       'max_adult': maxAdult,
       'max_children': maxChildren,
       'contactInfo': contactInfo,
-      'VerificationID': verificationID,
       'employee_name': employeeName,
       'employee_lastname': employeeLastname,
       'profit': profit,
       'age': age,
       'gender': gender,
+      'VerificationID': verificationID,
+      'Price': price,
     }.withoutNulls,
   );
 
@@ -232,7 +231,6 @@ class BookingsRecordDocumentEquality implements Equality<BookingsRecord> {
         e1?.endDate == e2?.endDate &&
         e1?.name == e2?.name &&
         e1?.location == e2?.location &&
-        e1?.price == e2?.price &&
         e1?.placeStringRef == e2?.placeStringRef &&
         e1?.firstname == e2?.firstname &&
         e1?.earnings == e2?.earnings &&
@@ -240,12 +238,13 @@ class BookingsRecordDocumentEquality implements Equality<BookingsRecord> {
         e1?.maxAdult == e2?.maxAdult &&
         e1?.maxChildren == e2?.maxChildren &&
         e1?.contactInfo == e2?.contactInfo &&
-        e1?.verificationID == e2?.verificationID &&
         e1?.employeeName == e2?.employeeName &&
         e1?.employeeLastname == e2?.employeeLastname &&
         e1?.profit == e2?.profit &&
         e1?.age == e2?.age &&
-        e1?.gender == e2?.gender;
+        e1?.gender == e2?.gender &&
+        e1?.verificationID == e2?.verificationID &&
+        e1?.price == e2?.price;
   }
 
   @override
@@ -255,7 +254,6 @@ class BookingsRecordDocumentEquality implements Equality<BookingsRecord> {
         e?.endDate,
         e?.name,
         e?.location,
-        e?.price,
         e?.placeStringRef,
         e?.firstname,
         e?.earnings,
@@ -263,12 +261,13 @@ class BookingsRecordDocumentEquality implements Equality<BookingsRecord> {
         e?.maxAdult,
         e?.maxChildren,
         e?.contactInfo,
-        e?.verificationID,
         e?.employeeName,
         e?.employeeLastname,
         e?.profit,
         e?.age,
-        e?.gender
+        e?.gender,
+        e?.verificationID,
+        e?.price
       ]);
 
   @override

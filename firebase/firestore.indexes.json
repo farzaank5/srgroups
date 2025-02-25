@@ -2,8 +2,8 @@
   "indexes": [],
   "fieldOverrides": [
     {
-      "collectionGroup": "fcm_tokens",
-      "fieldPath": "fcm_token",
+      "collectionGroup": "bookings",
+      "fieldPath": "endDate",
       "indexes": [
         {
           "order": "ASCENDING",

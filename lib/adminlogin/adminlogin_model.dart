@@ -1,16 +1,15 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'adminloginpage_widget.dart' show AdminloginpageWidget;
+import '/index.dart';
+import 'adminlogin_widget.dart' show AdminloginWidget;
 import 'package:flutter/material.dart';
 
-class AdminloginpageModel extends FlutterFlowModel<AdminloginpageWidget> {
+class AdminloginModel extends FlutterFlowModel<AdminloginWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // State field(s) for PinCode widget.
   TextEditingController? pinCodeController;
+  FocusNode? pinCodeFocusNode;
   String? Function(BuildContext, String?)? pinCodeControllerValidator;
-
-  /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
@@ -19,11 +18,7 @@ class AdminloginpageModel extends FlutterFlowModel<AdminloginpageWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
+    pinCodeFocusNode?.dispose();
     pinCodeController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

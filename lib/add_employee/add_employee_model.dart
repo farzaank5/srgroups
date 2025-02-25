@@ -1,11 +1,11 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'add_employee_widget.dart' show AddEmployeeWidget;
 import 'package:flutter/material.dart';
 
 class AddEmployeeModel extends FlutterFlowModel<AddEmployeeWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
@@ -14,9 +14,9 @@ class AddEmployeeModel extends FlutterFlowModel<AddEmployeeWidget> {
 
   // State field(s) for Name widget.
   FocusNode? nameFocusNode1;
-  TextEditingController? nameController1;
-  String? Function(BuildContext, String?)? nameController1Validator;
-  String? _nameController1Validator(BuildContext context, String? val) {
+  TextEditingController? nameTextController1;
+  String? Function(BuildContext, String?)? nameTextController1Validator;
+  String? _nameTextController1Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -26,13 +26,14 @@ class AddEmployeeModel extends FlutterFlowModel<AddEmployeeWidget> {
 
   // State field(s) for Name widget.
   FocusNode? nameFocusNode2;
-  TextEditingController? nameController2;
-  String? Function(BuildContext, String?)? nameController2Validator;
+  TextEditingController? nameTextController2;
+  String? Function(BuildContext, String?)? nameTextController2Validator;
   // State field(s) for Phone_number widget.
   FocusNode? phoneNumberFocusNode;
-  TextEditingController? phoneNumberController;
-  String? Function(BuildContext, String?)? phoneNumberControllerValidator;
-  String? _phoneNumberControllerValidator(BuildContext context, String? val) {
+  TextEditingController? phoneNumberTextController;
+  String? Function(BuildContext, String?)? phoneNumberTextControllerValidator;
+  String? _phoneNumberTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -49,9 +50,9 @@ class AddEmployeeModel extends FlutterFlowModel<AddEmployeeWidget> {
 
   // State field(s) for aadhar widget.
   FocusNode? aadharFocusNode;
-  TextEditingController? aadharController;
-  String? Function(BuildContext, String?)? aadharControllerValidator;
-  String? _aadharControllerValidator(BuildContext context, String? val) {
+  TextEditingController? aadharTextController;
+  String? Function(BuildContext, String?)? aadharTextControllerValidator;
+  String? _aadharTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -69,15 +70,15 @@ class AddEmployeeModel extends FlutterFlowModel<AddEmployeeWidget> {
   // State field(s) for emailAddress widget.
   final emailAddressKey = GlobalKey();
   FocusNode? emailAddressFocusNode;
-  TextEditingController? emailAddressController;
+  TextEditingController? emailAddressTextController;
   String? emailAddressSelectedOption;
-  String? Function(BuildContext, String?)? emailAddressControllerValidator;
+  String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
   // State field(s) for password widget.
   FocusNode? passwordFocusNode;
-  TextEditingController? passwordController;
+  TextEditingController? passwordTextController;
   late bool passwordVisibility;
-  String? Function(BuildContext, String?)? passwordControllerValidator;
-  String? _passwordControllerValidator(BuildContext context, String? val) {
+  String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  String? _passwordTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -91,10 +92,11 @@ class AddEmployeeModel extends FlutterFlowModel<AddEmployeeWidget> {
 
   // State field(s) for passwordConfirm widget.
   FocusNode? passwordConfirmFocusNode;
-  TextEditingController? passwordConfirmController;
+  TextEditingController? passwordConfirmTextController;
   late bool passwordConfirmVisibility;
-  String? Function(BuildContext, String?)? passwordConfirmControllerValidator;
-  String? _passwordConfirmControllerValidator(
+  String? Function(BuildContext, String?)?
+      passwordConfirmTextControllerValidator;
+  String? _passwordConfirmTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -107,44 +109,38 @@ class AddEmployeeModel extends FlutterFlowModel<AddEmployeeWidget> {
     return null;
   }
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
-    nameController1Validator = _nameController1Validator;
-    phoneNumberControllerValidator = _phoneNumberControllerValidator;
-    aadharControllerValidator = _aadharControllerValidator;
+    nameTextController1Validator = _nameTextController1Validator;
+    phoneNumberTextControllerValidator = _phoneNumberTextControllerValidator;
+    aadharTextControllerValidator = _aadharTextControllerValidator;
     passwordVisibility = false;
-    passwordControllerValidator = _passwordControllerValidator;
+    passwordTextControllerValidator = _passwordTextControllerValidator;
     passwordConfirmVisibility = false;
-    passwordConfirmControllerValidator = _passwordConfirmControllerValidator;
+    passwordConfirmTextControllerValidator =
+        _passwordConfirmTextControllerValidator;
   }
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     nameFocusNode1?.dispose();
-    nameController1?.dispose();
+    nameTextController1?.dispose();
 
     nameFocusNode2?.dispose();
-    nameController2?.dispose();
+    nameTextController2?.dispose();
 
     phoneNumberFocusNode?.dispose();
-    phoneNumberController?.dispose();
+    phoneNumberTextController?.dispose();
 
     aadharFocusNode?.dispose();
-    aadharController?.dispose();
+    aadharTextController?.dispose();
 
     emailAddressFocusNode?.dispose();
 
     passwordFocusNode?.dispose();
-    passwordController?.dispose();
+    passwordTextController?.dispose();
 
     passwordConfirmFocusNode?.dispose();
-    passwordConfirmController?.dispose();
+    passwordConfirmTextController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

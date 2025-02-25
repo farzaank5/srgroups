@@ -6,18 +6,21 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/permissions_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:provider/provider.dart';
 import 'add_villas_model.dart';
 export 'add_villas_model.dart';
 
 class AddVillasWidget extends StatefulWidget {
   const AddVillasWidget({super.key});
 
+  static String routeName = 'Add_villas';
+  static String routePath = '/addVillas';
+
   @override
-  _AddVillasWidgetState createState() => _AddVillasWidgetState();
+  State<AddVillasWidget> createState() => _AddVillasWidgetState();
 }
 
 class _AddVillasWidgetState extends State<AddVillasWidget>
@@ -26,51 +29,50 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 300.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 400.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 400.ms,
-          begin: const Offset(0.0, 20.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => AddVillasModel());
 
-    _model.nameController ??= TextEditingController();
+    _model.nameTextController ??= TextEditingController();
     _model.nameFocusNode ??= FocusNode();
 
-    _model.locationController ??= TextEditingController();
+    _model.locationTextController ??= TextEditingController();
     _model.locationFocusNode ??= FocusNode();
 
-    _model.maxAdultController1 ??= TextEditingController();
+    _model.maxAdultTextController1 ??= TextEditingController();
     _model.maxAdultFocusNode1 ??= FocusNode();
 
-    _model.maxAdultController2 ??= TextEditingController();
+    _model.maxAdultTextController2 ??= TextEditingController();
     _model.maxAdultFocusNode2 ??= FocusNode();
 
-    _model.employeePercentageController ??= TextEditingController();
+    _model.employeePercentageTextController ??= TextEditingController();
     _model.employeePercentageFocusNode ??= FocusNode();
 
-    _model.stratingPriceController ??= TextEditingController();
-    _model.stratingPriceFocusNode ??= FocusNode();
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 300.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 20.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -82,21 +84,11 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -117,7 +109,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
               context.pop();
             },
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
@@ -134,16 +126,16 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 10.0),
                             child: SingleChildScrollView(
                               primary: false,
@@ -166,13 +158,13 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                       ),
                                     ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Form(
                                       key: _model.formKey,
                                       autovalidateMode:
                                           AutovalidateMode.disabled,
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 0.0, 20.0, 0.0),
                                         child: SingleChildScrollView(
                                           primary: false,
@@ -191,16 +183,20 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             -1.0, 0.0),
                                                     child: Text(
                                                       'Add Villas',
                                                       textAlign:
                                                           TextAlign.start,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .headlineMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Outfit',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                   Icon(
@@ -213,21 +209,25 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                 ],
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 5.0),
                                                 child: Text(
                                                   'By filling the required information.',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                 ),
                                               ),
                                               Stack(
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 10.0),
                                                     child: InkWell(
@@ -240,6 +240,10 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
+                                                        await requestPermission(
+                                                            cameraPermission);
+                                                        await requestPermission(
+                                                            photoLibraryPermission);
                                                         final selectedMedia =
                                                             await selectMediaWithSourceBottomSheet(
                                                           context: context,
@@ -264,9 +268,9 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                                 validateFileFormat(
                                                                     m.storagePath,
                                                                     context))) {
-                                                          setState(() => _model
-                                                                  .isDataUploading =
-                                                              true);
+                                                          safeSetState(() =>
+                                                              _model.isDataUploading =
+                                                                  true);
                                                           var selectedUploadedFiles =
                                                               <FFUploadedFile>[];
 
@@ -330,7 +334,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                                       .length ==
                                                                   selectedMedia
                                                                       .length) {
-                                                            setState(() {
+                                                            safeSetState(() {
                                                               _model.uploadedLocalFile =
                                                                   selectedUploadedFiles
                                                                       .first;
@@ -342,7 +346,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                                 context,
                                                                 'Success!');
                                                           } else {
-                                                            setState(() {});
+                                                            safeSetState(() {});
                                                             showUploadMessage(
                                                                 context,
                                                                 'Failed to upload data');
@@ -352,7 +356,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                       },
                                                       child: Container(
                                                         width: 350.0,
-                                                        height: 198.0,
+                                                        height: 226.0,
                                                         decoration:
                                                             BoxDecoration(
                                                           color: FlutterFlowTheme
@@ -381,7 +385,7 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                           ),
                                                         ),
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, 0.0),
                                                       ),
                                                     ),
@@ -389,18 +393,18 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                 ],
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
-                                                    controller:
-                                                        _model.nameController,
+                                                    controller: _model
+                                                        .nameTextController,
                                                     focusNode:
                                                         _model.nameFocusNode,
                                                     autofocus: true,
-                                                    autofillHints: const [
+                                                    autofillHints: [
                                                       AutofillHints.name
                                                     ],
                                                     obscureText: false,
@@ -409,10 +413,16 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelMedium,
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color: Colors.black,
                                                           width: 0.5,
                                                         ),
@@ -464,28 +474,33 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                     keyboardType:
                                                         TextInputType.name,
                                                     validator: _model
-                                                        .nameControllerValidator
+                                                        .nameTextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
                                                     controller: _model
-                                                        .locationController,
+                                                        .locationTextController,
                                                     focusNode: _model
                                                         .locationFocusNode,
                                                     autofocus: true,
-                                                    autofillHints: const [
+                                                    autofillHints: [
                                                       AutofillHints.addressCity
                                                     ],
                                                     obscureText: false,
@@ -494,10 +509,16 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelMedium,
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color: Colors.black,
                                                           width: 0.5,
                                                         ),
@@ -549,28 +570,33 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                     keyboardType: TextInputType
                                                         .streetAddress,
                                                     validator: _model
-                                                        .locationControllerValidator
+                                                        .locationTextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
                                                     controller: _model
-                                                        .maxAdultController1,
+                                                        .maxAdultTextController1,
                                                     focusNode: _model
                                                         .maxAdultFocusNode1,
                                                     autofocus: true,
-                                                    autofillHints: const [
+                                                    autofillHints: [
                                                       AutofillHints.birthday
                                                     ],
                                                     obscureText: false,
@@ -579,10 +605,16 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelMedium,
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color: Colors.black,
                                                           width: 0.5,
                                                         ),
@@ -634,28 +666,33 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                     keyboardType:
                                                         TextInputType.number,
                                                     validator: _model
-                                                        .maxAdultController1Validator
+                                                        .maxAdultTextController1Validator
                                                         .asValidator(context),
                                                   ),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
                                                     controller: _model
-                                                        .maxAdultController2,
+                                                        .maxAdultTextController2,
                                                     focusNode: _model
                                                         .maxAdultFocusNode2,
                                                     autofocus: true,
-                                                    autofillHints: const [
+                                                    autofillHints: [
                                                       AutofillHints.birthday
                                                     ],
                                                     obscureText: false,
@@ -664,10 +701,16 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelMedium,
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color: Colors.black,
                                                           width: 0.5,
                                                         ),
@@ -719,28 +762,33 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                     keyboardType:
                                                         TextInputType.number,
                                                     validator: _model
-                                                        .maxAdultController2Validator
+                                                        .maxAdultTextController2Validator
                                                         .asValidator(context),
                                                   ),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
                                                     controller: _model
-                                                        .employeePercentageController,
+                                                        .employeePercentageTextController,
                                                     focusNode: _model
                                                         .employeePercentageFocusNode,
                                                     autofocus: true,
-                                                    autofillHints: const [
+                                                    autofillHints: [
                                                       AutofillHints.birthday
                                                     ],
                                                     obscureText: false,
@@ -750,10 +798,16 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelMedium,
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color: Colors.black,
                                                           width: 0.5,
                                                         ),
@@ -805,106 +859,25 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                     keyboardType:
                                                         TextInputType.number,
                                                     validator: _model
-                                                        .employeePercentageControllerValidator
-                                                        .asValidator(context),
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
-                                                  width: double.infinity,
-                                                  child: TextFormField(
-                                                    controller: _model
-                                                        .stratingPriceController,
-                                                    focusNode: _model
-                                                        .stratingPriceFocusNode,
-                                                    autofocus: true,
-                                                    autofillHints: const [
-                                                      AutofillHints.birthday
-                                                    ],
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      labelText:
-                                                          'Price  Per Night',
-                                                      labelStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium,
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: const BorderSide(
-                                                          color: Colors.black,
-                                                          width: 0.5,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          width: 0.5,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      errorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 0.5,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 0.5,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      filled: true,
-                                                      fillColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryBtnText,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    validator: _model
-                                                        .stratingPriceControllerValidator
+                                                        .employeePercentageTextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 5.0, 0.0, 0.0),
                                                   child: FFButtonWidget(
@@ -930,26 +903,22 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                           .set(
                                                               createVillasRecordData(
                                                             location: _model
-                                                                .locationController
+                                                                .locationTextController
                                                                 .text,
                                                             displayName: _model
-                                                                .nameController
+                                                                .nameTextController
                                                                 .text,
                                                             maxAdult: int
                                                                 .tryParse(_model
-                                                                    .maxAdultController1
+                                                                    .maxAdultTextController1
                                                                     .text),
                                                             maxChildren: int
                                                                 .tryParse(_model
-                                                                    .maxAdultController2
-                                                                    .text),
-                                                            price: int.tryParse(
-                                                                _model
-                                                                    .stratingPriceController
+                                                                    .maxAdultTextController2
                                                                     .text),
                                                             employeePer: int
                                                                 .tryParse(_model
-                                                                    .employeePercentageController
+                                                                    .employeePercentageTextController
                                                                     .text),
                                                             phoUrl: _model
                                                                 .uploadedFileUrl,
@@ -971,9 +940,11 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryBtnText,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                           ),
-                                                          duration: const Duration(
+                                                          duration: Duration(
                                                               milliseconds:
                                                                   4000),
                                                           backgroundColor:
@@ -982,21 +953,22 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                       );
 
                                                       context.pushNamed(
-                                                          'villaslist');
+                                                          VillaslistWidget
+                                                              .routeName);
                                                     },
                                                     text: 'Add',
                                                     options: FFButtonOptions(
                                                       width: double.infinity,
                                                       height: 40.0,
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   24.0,
                                                                   0.0,
                                                                   24.0,
                                                                   0.0),
                                                       iconPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1012,9 +984,11 @@ class _AddVillasWidgetState extends State<AddVillasWidget>
                                                                     'Plus Jakarta Sans',
                                                                 color: Colors
                                                                     .white,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                       elevation: 3.0,
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Colors.transparent,
                                                         width: 1.0,

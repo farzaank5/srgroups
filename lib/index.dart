@@ -1,5 +1,4 @@
 // Export pages
-export '/adminloginpage/adminloginpage_widget.dart' show AdminloginpageWidget;
 export '/admin_dashboard/admin_dashboard_widget.dart' show AdminDashboardWidget;
 export '/add_employee/add_employee_widget.dart' show AddEmployeeWidget;
 export '/add_villas/add_villas_widget.dart' show AddVillasWidget;
@@ -19,8 +18,10 @@ export '/total_bookings/total_bookings_widget.dart' show TotalBookingsWidget;
 export '/employee_details/employee_details_widget.dart'
     show EmployeeDetailsWidget;
 export '/guest_info/guest_info_widget.dart' show GuestInfoWidget;
-export '/adminloginpage_copy/adminloginpage_copy_widget.dart'
-    show AdminloginpageCopyWidget;
+export '/adminlogin/adminlogin_widget.dart' show AdminloginWidget;
 export '/total_bookings_copy/total_bookings_copy_widget.dart'
     show TotalBookingsCopyWidget;
 export '/cancelbooking/cancelbooking_widget.dart' show CancelbookingWidget;
+export '/currentbookingdetails/currentbookingdetails_widget.dart'
+    show CurrentbookingdetailsWidget;
+export '/villas/villas_widget.dart' show VillasWidget;

@@ -5,15 +5,16 @@ import 'package:provider/provider.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/backend/push_notifications/push_notifications_handler.dart'
-    show PushNotificationsHandler;
-import '/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+
+import '/index.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
+
+GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
@@ -72,128 +73,174 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
+      navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? const AdminDashboardWidget()
-          : const AdminloginpageCopyWidget(),
+          ? AdminDashboardWidget()
+          : AdminloginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const AdminDashboardWidget()
-              : const AdminloginpageCopyWidget(),
+              ? AdminDashboardWidget()
+              : AdminloginWidget(),
         ),
         FFRoute(
-          name: 'Adminloginpage',
-          path: '/adminloginpage',
-          builder: (context, params) => const AdminloginpageWidget(),
+          name: AdminDashboardWidget.routeName,
+          path: AdminDashboardWidget.routePath,
+          builder: (context, params) => AdminDashboardWidget(),
         ),
         FFRoute(
-          name: 'admin_dashboard',
-          path: '/adminDashboard',
-          builder: (context, params) => const AdminDashboardWidget(),
+          name: AddEmployeeWidget.routeName,
+          path: AddEmployeeWidget.routePath,
+          builder: (context, params) => AddEmployeeWidget(),
         ),
         FFRoute(
-          name: 'Add_employee',
-          path: '/addEmployee',
-          builder: (context, params) => const AddEmployeeWidget(),
+          name: AddVillasWidget.routeName,
+          path: AddVillasWidget.routePath,
+          builder: (context, params) => AddVillasWidget(),
         ),
         FFRoute(
-          name: 'Add_villas',
-          path: '/addVillas',
-          builder: (context, params) => const AddVillasWidget(),
-        ),
-        FFRoute(
-          name: 'addedvillasdetails',
-          path: '/addedvillasdetails',
+          name: AddedvillasdetailsWidget.routeName,
+          path: AddedvillasdetailsWidget.routePath,
           builder: (context, params) => AddedvillasdetailsWidget(
             placeRef: params.getParam(
-                'placeRef', ParamType.DocumentReference, false, ['villas']),
+              'placeRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['villas'],
+            ),
           ),
         ),
         FFRoute(
-          name: 'villaslist',
-          path: '/villaslist',
-          builder: (context, params) => const VillaslistWidget(),
+          name: VillaslistWidget.routeName,
+          path: VillaslistWidget.routePath,
+          builder: (context, params) => VillaslistWidget(),
         ),
         FFRoute(
-          name: 'admin_profile',
-          path: '/adminProfile',
-          builder: (context, params) => const AdminProfileWidget(),
+          name: AdminProfileWidget.routeName,
+          path: AdminProfileWidget.routePath,
+          builder: (context, params) => AdminProfileWidget(),
         ),
         FFRoute(
-          name: 'changepassword',
-          path: '/changepassword',
-          builder: (context, params) => const ChangepasswordWidget(),
+          name: ChangepasswordWidget.routeName,
+          path: ChangepasswordWidget.routePath,
+          builder: (context, params) => ChangepasswordWidget(),
         ),
         FFRoute(
-          name: 'employeeslist',
-          path: '/employeeslist',
-          builder: (context, params) => const EmployeeslistWidget(),
+          name: EmployeeslistWidget.routeName,
+          path: EmployeeslistWidget.routePath,
+          builder: (context, params) => EmployeeslistWidget(),
         ),
         FFRoute(
-          name: 'totalEarnings',
-          path: '/totalEarnings',
-          builder: (context, params) => const TotalEarningsWidget(),
+          name: TotalEarningsWidget.routeName,
+          path: TotalEarningsWidget.routePath,
+          builder: (context, params) => TotalEarningsWidget(),
         ),
         FFRoute(
-          name: 'totalProfit',
-          path: '/totalProfit',
-          builder: (context, params) => const TotalProfitWidget(),
+          name: TotalProfitWidget.routeName,
+          path: TotalProfitWidget.routePath,
+          builder: (context, params) => TotalProfitWidget(),
         ),
         FFRoute(
-          name: 'AllBookings',
-          path: '/allBookings',
-          builder: (context, params) => const AllBookingsWidget(),
+          name: AllBookingsWidget.routeName,
+          path: AllBookingsWidget.routePath,
+          builder: (context, params) => AllBookingsWidget(),
         ),
         FFRoute(
-          name: 'bookingDetails',
-          path: '/bookingDetails',
+          name: BookingDetailsWidget.routeName,
+          path: BookingDetailsWidget.routePath,
           builder: (context, params) => BookingDetailsWidget(
             placeRef: params.getParam(
-                'placeRef', ParamType.DocumentReference, false, ['villas']),
-            totalbookingRef: params.getParam('totalbookingRef',
-                ParamType.DocumentReference, false, ['totalBooking']),
+              'placeRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['villas'],
+            ),
+            totalbookingRef: params.getParam(
+              'totalbookingRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['totalBooking'],
+            ),
           ),
         ),
         FFRoute(
-          name: 'employeesPasswords',
-          path: '/employeesPasswords',
-          builder: (context, params) => const EmployeesPasswordsWidget(),
+          name: EmployeesPasswordsWidget.routeName,
+          path: EmployeesPasswordsWidget.routePath,
+          builder: (context, params) => EmployeesPasswordsWidget(),
         ),
         FFRoute(
-          name: 'totalBookings',
-          path: '/totalBookings',
-          builder: (context, params) => const TotalBookingsWidget(),
+          name: TotalBookingsWidget.routeName,
+          path: TotalBookingsWidget.routePath,
+          builder: (context, params) => TotalBookingsWidget(),
         ),
         FFRoute(
-          name: 'employee_details',
-          path: '/employeeDetails',
-          builder: (context, params) => const EmployeeDetailsWidget(),
+          name: EmployeeDetailsWidget.routeName,
+          path: EmployeeDetailsWidget.routePath,
+          builder: (context, params) => EmployeeDetailsWidget(),
         ),
         FFRoute(
-          name: 'GuestInfo',
-          path: '/guestInfo',
-          builder: (context, params) => const GuestInfoWidget(),
+          name: GuestInfoWidget.routeName,
+          path: GuestInfoWidget.routePath,
+          builder: (context, params) => GuestInfoWidget(),
         ),
         FFRoute(
-          name: 'AdminloginpageCopy',
-          path: '/adminloginpageCopy',
-          builder: (context, params) => const AdminloginpageCopyWidget(),
+          name: AdminloginWidget.routeName,
+          path: AdminloginWidget.routePath,
+          builder: (context, params) => AdminloginWidget(),
         ),
         FFRoute(
-          name: 'totalBookingsCopy',
-          path: '/totalBookingsCopy',
-          builder: (context, params) => const TotalBookingsCopyWidget(),
+          name: TotalBookingsCopyWidget.routeName,
+          path: TotalBookingsCopyWidget.routePath,
+          builder: (context, params) => TotalBookingsCopyWidget(),
         ),
         FFRoute(
-          name: 'cancelbooking',
-          path: '/cancelbooking',
+          name: CancelbookingWidget.routeName,
+          path: CancelbookingWidget.routePath,
           builder: (context, params) => CancelbookingWidget(
             placeRef: params.getParam(
-                'placeRef', ParamType.DocumentReference, false, ['villas']),
-            totalbookingRef: params.getParam('totalbookingRef',
-                ParamType.DocumentReference, false, ['users', 'bookings']),
+              'placeRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['villas'],
+            ),
+            totalbookingRef: params.getParam(
+              'totalbookingRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users', 'bookings'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: CurrentbookingdetailsWidget.routeName,
+          path: CurrentbookingdetailsWidget.routePath,
+          builder: (context, params) => CurrentbookingdetailsWidget(
+            placeRef: params.getParam(
+              'placeRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['villas'],
+            ),
+            totalbookingRef: params.getParam(
+              'totalbookingRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users', 'bookings'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: VillasWidget.routeName,
+          path: VillasWidget.routePath,
+          builder: (context, params) => VillasWidget(
+            uid: params.getParam(
+              'uid',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
@@ -271,7 +318,7 @@ extension _GoRouterStateExtensions on GoRouterState {
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
-    ..addAll(queryParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -290,7 +337,7 @@ class FFParameters {
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
       state.allParams.isEmpty ||
-      (state.extraMap.length == 1 &&
+      (state.allParams.length == 1 &&
           state.extraMap.containsKey(kTransitionInfoKey));
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
@@ -311,10 +358,10 @@ class FFParameters {
 
   dynamic getParam<T>(
     String paramName,
-    ParamType type, [
+    ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
-  ]) {
+  }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
     }
@@ -327,8 +374,12 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+    );
   }
 }
 
@@ -360,12 +411,13 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/adminloginpageCopy';
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
+            return '/adminlogin';
           }
           return null;
         },
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(
@@ -381,7 +433,7 @@ class FFRoute {
                     fit: BoxFit.fitHeight,
                   ),
                 )
-              : PushNotificationsHandler(child: page);
+              : page;
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition
@@ -423,7 +475,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {
@@ -434,7 +486,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location = GoRouterState.of(context).uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;
@@ -444,4 +496,14 @@ class RootPageContext {
         value: RootPageContext(true, errorRoute),
         child: child,
       );
+}
+
+extension GoRouterLocationExtension on GoRouter {
+  String getCurrentLocation() {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 }

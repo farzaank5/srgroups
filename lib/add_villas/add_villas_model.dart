@@ -1,11 +1,11 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'add_villas_widget.dart' show AddVillasWidget;
 import 'package:flutter/material.dart';
 
 class AddVillasModel extends FlutterFlowModel<AddVillasWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
@@ -14,14 +14,14 @@ class AddVillasModel extends FlutterFlowModel<AddVillasWidget> {
 
   // State field(s) for Name widget.
   FocusNode? nameFocusNode;
-  TextEditingController? nameController;
-  String? Function(BuildContext, String?)? nameControllerValidator;
-  String? _nameControllerValidator(BuildContext context, String? val) {
+  TextEditingController? nameTextController;
+  String? Function(BuildContext, String?)? nameTextControllerValidator;
+  String? _nameTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
 
-    if (val.isEmpty) {
+    if (val.length < 1) {
       return 'Minimum 1 digits';
     }
 
@@ -30,9 +30,9 @@ class AddVillasModel extends FlutterFlowModel<AddVillasWidget> {
 
   // State field(s) for Location widget.
   FocusNode? locationFocusNode;
-  TextEditingController? locationController;
-  String? Function(BuildContext, String?)? locationControllerValidator;
-  String? _locationControllerValidator(BuildContext context, String? val) {
+  TextEditingController? locationTextController;
+  String? Function(BuildContext, String?)? locationTextControllerValidator;
+  String? _locationTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -42,9 +42,9 @@ class AddVillasModel extends FlutterFlowModel<AddVillasWidget> {
 
   // State field(s) for max_adult widget.
   FocusNode? maxAdultFocusNode1;
-  TextEditingController? maxAdultController1;
-  String? Function(BuildContext, String?)? maxAdultController1Validator;
-  String? _maxAdultController1Validator(BuildContext context, String? val) {
+  TextEditingController? maxAdultTextController1;
+  String? Function(BuildContext, String?)? maxAdultTextController1Validator;
+  String? _maxAdultTextController1Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -54,9 +54,9 @@ class AddVillasModel extends FlutterFlowModel<AddVillasWidget> {
 
   // State field(s) for max_adult widget.
   FocusNode? maxAdultFocusNode2;
-  TextEditingController? maxAdultController2;
-  String? Function(BuildContext, String?)? maxAdultController2Validator;
-  String? _maxAdultController2Validator(BuildContext context, String? val) {
+  TextEditingController? maxAdultTextController2;
+  String? Function(BuildContext, String?)? maxAdultTextController2Validator;
+  String? _maxAdultTextController2Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -66,10 +66,10 @@ class AddVillasModel extends FlutterFlowModel<AddVillasWidget> {
 
   // State field(s) for EmployeePercentage widget.
   FocusNode? employeePercentageFocusNode;
-  TextEditingController? employeePercentageController;
+  TextEditingController? employeePercentageTextController;
   String? Function(BuildContext, String?)?
-      employeePercentageControllerValidator;
-  String? _employeePercentageControllerValidator(
+      employeePercentageTextControllerValidator;
+  String? _employeePercentageTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -78,54 +78,31 @@ class AddVillasModel extends FlutterFlowModel<AddVillasWidget> {
     return null;
   }
 
-  // State field(s) for Strating_Price widget.
-  FocusNode? stratingPriceFocusNode;
-  TextEditingController? stratingPriceController;
-  String? Function(BuildContext, String?)? stratingPriceControllerValidator;
-  String? _stratingPriceControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    return null;
-  }
-
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
-    nameControllerValidator = _nameControllerValidator;
-    locationControllerValidator = _locationControllerValidator;
-    maxAdultController1Validator = _maxAdultController1Validator;
-    maxAdultController2Validator = _maxAdultController2Validator;
-    employeePercentageControllerValidator =
-        _employeePercentageControllerValidator;
-    stratingPriceControllerValidator = _stratingPriceControllerValidator;
+    nameTextControllerValidator = _nameTextControllerValidator;
+    locationTextControllerValidator = _locationTextControllerValidator;
+    maxAdultTextController1Validator = _maxAdultTextController1Validator;
+    maxAdultTextController2Validator = _maxAdultTextController2Validator;
+    employeePercentageTextControllerValidator =
+        _employeePercentageTextControllerValidator;
   }
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     nameFocusNode?.dispose();
-    nameController?.dispose();
+    nameTextController?.dispose();
 
     locationFocusNode?.dispose();
-    locationController?.dispose();
+    locationTextController?.dispose();
 
     maxAdultFocusNode1?.dispose();
-    maxAdultController1?.dispose();
+    maxAdultTextController1?.dispose();
 
     maxAdultFocusNode2?.dispose();
-    maxAdultController2?.dispose();
+    maxAdultTextController2?.dispose();
 
     employeePercentageFocusNode?.dispose();
-    employeePercentageController?.dispose();
-
-    stratingPriceFocusNode?.dispose();
-    stratingPriceController?.dispose();
+    employeePercentageTextController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

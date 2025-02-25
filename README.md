@@ -1,4 +1,4 @@
-# sr admin
+# SR Admin
 
 A new Flutter project.
 

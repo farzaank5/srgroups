@@ -3,16 +3,15 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class TotalBookingRecord extends FirestoreRecord {
   TotalBookingRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -76,11 +75,6 @@ class TotalBookingRecord extends FirestoreRecord {
   int get contactinfo => _contactinfo ?? 0;
   bool hasContactinfo() => _contactinfo != null;
 
-  // "verificationID" field.
-  int? _verificationID;
-  int get verificationID => _verificationID ?? 0;
-  bool hasVerificationID() => _verificationID != null;
-
   // "profit" field.
   double? _profit;
   double get profit => _profit ?? 0.0;
@@ -111,6 +105,11 @@ class TotalBookingRecord extends FirestoreRecord {
   DateTime? get createdtime => _createdtime;
   bool hasCreatedtime() => _createdtime != null;
 
+  // "VerificationID" field.
+  String? _verificationID;
+  String get verificationID => _verificationID ?? '';
+  bool hasVerificationID() => _verificationID != null;
+
   void _initializeFields() {
     _nameofVilla = snapshotData['nameofVilla'] as String?;
     _price = castToType<double>(snapshotData['Price']);
@@ -124,13 +123,13 @@ class TotalBookingRecord extends FirestoreRecord {
     _leadGuest = snapshotData['lead_guest'] as String?;
     _age = castToType<int>(snapshotData['age']);
     _contactinfo = castToType<int>(snapshotData['contactinfo']);
-    _verificationID = castToType<int>(snapshotData['verificationID']);
     _profit = castToType<double>(snapshotData['profit']);
     _location = snapshotData['location'] as String?;
     _maxAdult = castToType<int>(snapshotData['max_adult']);
     _maxChildren = castToType<int>(snapshotData['max_children']);
     _gender = snapshotData['gender'] as String?;
     _createdtime = snapshotData['createdtime'] as DateTime?;
+    _verificationID = snapshotData['VerificationID'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -180,13 +179,13 @@ Map<String, dynamic> createTotalBookingRecordData({
   String? leadGuest,
   int? age,
   int? contactinfo,
-  int? verificationID,
   double? profit,
   String? location,
   int? maxAdult,
   int? maxChildren,
   String? gender,
   DateTime? createdtime,
+  String? verificationID,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -202,13 +201,13 @@ Map<String, dynamic> createTotalBookingRecordData({
       'lead_guest': leadGuest,
       'age': age,
       'contactinfo': contactinfo,
-      'verificationID': verificationID,
       'profit': profit,
       'location': location,
       'max_adult': maxAdult,
       'max_children': maxChildren,
       'gender': gender,
       'createdtime': createdtime,
+      'VerificationID': verificationID,
     }.withoutNulls,
   );
 
@@ -233,13 +232,13 @@ class TotalBookingRecordDocumentEquality
         e1?.leadGuest == e2?.leadGuest &&
         e1?.age == e2?.age &&
         e1?.contactinfo == e2?.contactinfo &&
-        e1?.verificationID == e2?.verificationID &&
         e1?.profit == e2?.profit &&
         e1?.location == e2?.location &&
         e1?.maxAdult == e2?.maxAdult &&
         e1?.maxChildren == e2?.maxChildren &&
         e1?.gender == e2?.gender &&
-        e1?.createdtime == e2?.createdtime;
+        e1?.createdtime == e2?.createdtime &&
+        e1?.verificationID == e2?.verificationID;
   }
 
   @override
@@ -256,13 +255,13 @@ class TotalBookingRecordDocumentEquality
         e?.leadGuest,
         e?.age,
         e?.contactinfo,
-        e?.verificationID,
         e?.profit,
         e?.location,
         e?.maxAdult,
         e?.maxChildren,
         e?.gender,
-        e?.createdtime
+        e?.createdtime,
+        e?.verificationID
       ]);
 
   @override

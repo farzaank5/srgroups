@@ -7,20 +7,23 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/permissions_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 import 'add_employee_model.dart';
 export 'add_employee_model.dart';
 
 class AddEmployeeWidget extends StatefulWidget {
   const AddEmployeeWidget({super.key});
 
+  static String routeName = 'Add_employee';
+  static String routePath = '/addEmployee';
+
   @override
-  _AddEmployeeWidgetState createState() => _AddEmployeeWidgetState();
+  State<AddEmployeeWidget> createState() => _AddEmployeeWidgetState();
 }
 
 class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
@@ -34,24 +37,24 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
     super.initState();
     _model = createModel(context, () => AddEmployeeModel());
 
-    _model.nameController1 ??= TextEditingController();
+    _model.nameTextController1 ??= TextEditingController();
     _model.nameFocusNode1 ??= FocusNode();
 
-    _model.nameController2 ??= TextEditingController();
+    _model.nameTextController2 ??= TextEditingController();
     _model.nameFocusNode2 ??= FocusNode();
 
-    _model.phoneNumberController ??= TextEditingController();
+    _model.phoneNumberTextController ??= TextEditingController();
     _model.phoneNumberFocusNode ??= FocusNode();
 
-    _model.aadharController ??= TextEditingController();
+    _model.aadharTextController ??= TextEditingController();
     _model.aadharFocusNode ??= FocusNode();
 
-    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressTextController ??= TextEditingController();
 
-    _model.passwordController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
-    _model.passwordConfirmController ??= TextEditingController();
+    _model.passwordConfirmTextController ??= TextEditingController();
     _model.passwordConfirmFocusNode ??= FocusNode();
   }
 
@@ -64,21 +67,11 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
@@ -99,7 +92,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
               context.pop();
             },
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
@@ -116,19 +109,19 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Form(
                             key: _model.formKey,
                             autovalidateMode: AutovalidateMode.disabled,
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 0.0, 32.0, 50.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -156,25 +149,33 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 'Add Employee',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .headlineMedium,
+                                                        .headlineMedium
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
                                             ],
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 24.0),
                                             child: Text(
                                               'By filling the required information.',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                           ),
                                         ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: FaIcon(
                                           FontAwesomeIcons.userTie,
@@ -186,7 +187,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                     ],
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 20.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -194,6 +195,10 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        await requestPermission(
+                                            cameraPermission);
+                                        await requestPermission(
+                                            photoLibraryPermission);
                                         final selectedMedia =
                                             await selectMediaWithSourceBottomSheet(
                                           context: context,
@@ -205,7 +210,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                             selectedMedia.every((m) =>
                                                 validateFileFormat(
                                                     m.storagePath, context))) {
-                                          setState(() =>
+                                          safeSetState(() =>
                                               _model.isDataUploading = true);
                                           var selectedUploadedFiles =
                                               <FFUploadedFile>[];
@@ -243,14 +248,14 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                   selectedMedia.length &&
                                               downloadUrls.length ==
                                                   selectedMedia.length) {
-                                            setState(() {
+                                            safeSetState(() {
                                               _model.uploadedLocalFile =
                                                   selectedUploadedFiles.first;
                                               _model.uploadedFileUrl =
                                                   downloadUrls.first;
                                             });
                                           } else {
-                                            setState(() {});
+                                            safeSetState(() {});
                                             return;
                                           }
                                         }
@@ -261,7 +266,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .lineColor,
-                                          borderRadius: const BorderRadius.only(
+                                          borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(10.0),
                                             bottomRight: Radius.circular(10.0),
                                             topLeft: Radius.circular(10.0),
@@ -273,15 +278,15 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(2.0),
+                                          padding: EdgeInsets.all(2.0),
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: CachedNetworkImage(
                                               fadeInDuration:
-                                                  const Duration(milliseconds: 500),
+                                                  Duration(milliseconds: 500),
                                               fadeOutDuration:
-                                                  const Duration(milliseconds: 500),
+                                                  Duration(milliseconds: 500),
                                               imageUrl: valueOrDefault<String>(
                                                 _model.uploadedFileUrl,
                                                 'https://cdn4.vectorstock.com/i/1000x1000/79/43/camera-photo-upload-icon-on-isolated-white-vector-31757943.jpg',
@@ -296,23 +301,27 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
-                                    child: SizedBox(
+                                    child: Container(
                                       width: double.infinity,
                                       child: TextFormField(
-                                        controller: _model.nameController1,
+                                        controller: _model.nameTextController1,
                                         focusNode: _model.nameFocusNode1,
                                         autofocus: true,
-                                        autofillHints: const [AutofillHints.name],
+                                        autofillHints: [AutofillHints.name],
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: 'First name',
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Outfit',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.black,
                                               width: 0.5,
                                             ),
@@ -320,7 +329,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.black,
                                               width: 0.5,
                                             ),
@@ -349,35 +358,43 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0x00F1F4F8),
+                                          fillColor: Color(0x00F1F4F8),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              letterSpacing: 0.0,
+                                            ),
                                         keyboardType: TextInputType.name,
                                         validator: _model
-                                            .nameController1Validator
+                                            .nameTextController1Validator
                                             .asValidator(context),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
-                                    child: SizedBox(
+                                    child: Container(
                                       width: double.infinity,
                                       child: TextFormField(
-                                        controller: _model.nameController2,
+                                        controller: _model.nameTextController2,
                                         focusNode: _model.nameFocusNode2,
                                         autofocus: true,
-                                        autofillHints: const [AutofillHints.name],
+                                        autofillHints: [AutofillHints.name],
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: 'Last name',
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Outfit',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.black,
                                               width: 0.5,
                                             ),
@@ -385,7 +402,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.black,
                                               width: 0.5,
                                             ),
@@ -414,28 +431,32 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0x00F1F4F8),
+                                          fillColor: Color(0x00F1F4F8),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              letterSpacing: 0.0,
+                                            ),
                                         keyboardType: TextInputType.name,
                                         validator: _model
-                                            .nameController2Validator
+                                            .nameTextController2Validator
                                             .asValidator(context),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
-                                    child: SizedBox(
+                                    child: Container(
                                       width: double.infinity,
                                       child: TextFormField(
                                         controller:
-                                            _model.phoneNumberController,
+                                            _model.phoneNumberTextController,
                                         focusNode: _model.phoneNumberFocusNode,
                                         autofocus: true,
-                                        autofillHints: const [
+                                        autofillHints: [
                                           AutofillHints.telephoneNumber
                                         ],
                                         obscureText: false,
@@ -443,9 +464,13 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                           labelText: 'Contact Number',
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Outfit',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.black,
                                               width: 0.5,
                                             ),
@@ -453,7 +478,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.black,
                                               width: 0.5,
                                             ),
@@ -482,10 +507,14 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0x00F1F4F8),
+                                          fillColor: Color(0x00F1F4F8),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              letterSpacing: 0.0,
+                                            ),
                                         maxLength: 10,
                                         maxLengthEnforcement:
                                             MaxLengthEnforcement.enforced,
@@ -496,21 +525,21 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                             null,
                                         keyboardType: TextInputType.number,
                                         validator: _model
-                                            .phoneNumberControllerValidator
+                                            .phoneNumberTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
-                                    child: SizedBox(
+                                    child: Container(
                                       width: double.infinity,
                                       child: TextFormField(
-                                        controller: _model.aadharController,
+                                        controller: _model.aadharTextController,
                                         focusNode: _model.aadharFocusNode,
                                         autofocus: true,
-                                        autofillHints: const [
+                                        autofillHints: [
                                           AutofillHints.telephoneNumber
                                         ],
                                         obscureText: false,
@@ -518,9 +547,13 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                           labelText: 'Aadhar Card',
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Outfit',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.black,
                                               width: 0.5,
                                             ),
@@ -528,7 +561,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.black,
                                               width: 0.5,
                                             ),
@@ -557,10 +590,14 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0x00F1F4F8),
+                                          fillColor: Color(0x00F1F4F8),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              letterSpacing: 0.0,
+                                            ),
                                         maxLength: 12,
                                         maxLengthEnforcement:
                                             MaxLengthEnforcement.enforced,
@@ -571,18 +608,18 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                             null,
                                         keyboardType: TextInputType.number,
                                         validator: _model
-                                            .aadharControllerValidator
+                                            .aadharTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
-                                    child: SizedBox(
+                                    child: Container(
                                       width: double.infinity,
                                       child: Autocomplete<String>(
-                                        initialValue: const TextEditingValue(),
+                                        initialValue: TextEditingValue(),
                                         optionsBuilder: (textEditingValue) {
                                           if (textEditingValue.text == '') {
                                             return const Iterable<
@@ -601,14 +638,19 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                           return AutocompleteOptionsList(
                                             textFieldKey:
                                                 _model.emailAddressKey,
-                                            textController:
-                                                _model.emailAddressController!,
+                                            textController: _model
+                                                .emailAddressTextController!,
                                             options: options.toList(),
                                             onSelected: onSelected,
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
-                                            textHighlightStyle: const TextStyle(),
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          'Plus Jakarta Sans',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            textHighlightStyle: TextStyle(),
                                             elevation: 4.0,
                                             optionBackgroundColor:
                                                 FlutterFlowTheme.of(context)
@@ -620,7 +662,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                           );
                                         },
                                         onSelected: (String selection) {
-                                          setState(() => _model
+                                          safeSetState(() => _model
                                                   .emailAddressSelectedOption =
                                               selection);
                                           FocusScope.of(context).unfocus();
@@ -638,9 +680,9 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 true;
                                             _model.emailAddressFocusNode!
                                                 .addListener(
-                                                    () => setState(() {}));
+                                                    () => safeSetState(() {}));
                                           }
-                                          _model.emailAddressController =
+                                          _model.emailAddressTextController =
                                               textEditingController;
                                           return TextFormField(
                                             key: _model.emailAddressKey,
@@ -650,12 +692,12 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 onEditingComplete,
                                             onChanged: (_) =>
                                                 EasyDebounce.debounce(
-                                              '_model.emailAddressController',
-                                              const Duration(milliseconds: 2000),
-                                              () => setState(() {}),
+                                              '_model.emailAddressTextController',
+                                              Duration(milliseconds: 2000),
+                                              () => safeSetState(() {}),
                                             ),
                                             autofocus: true,
-                                            autofillHints: const [
+                                            autofillHints: [
                                               AutofillHints.email
                                             ],
                                             obscureText: false,
@@ -663,9 +705,13 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                               labelText: 'Email',
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Colors.black,
                                                   width: 0.5,
                                                 ),
@@ -704,12 +750,17 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                     BorderRadius.circular(12.0),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0x00F1F4F8),
+                                              fillColor: Color(0x00F1F4F8),
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                  letterSpacing: 0.0,
+                                                ),
                                             validator: _model
-                                                .emailAddressControllerValidator
+                                                .emailAddressTextControllerValidator
                                                 .asValidator(context),
                                           );
                                         },
@@ -717,23 +768,28 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
-                                    child: SizedBox(
+                                    child: Container(
                                       width: double.infinity,
                                       child: TextFormField(
-                                        controller: _model.passwordController,
+                                        controller:
+                                            _model.passwordTextController,
                                         focusNode: _model.passwordFocusNode,
                                         autofocus: true,
-                                        autofillHints: const [AutofillHints.password],
+                                        autofillHints: [AutofillHints.password],
                                         obscureText: !_model.passwordVisibility,
                                         decoration: InputDecoration(
                                           labelText: 'Password',
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Outfit',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.black,
                                               width: 0.5,
                                             ),
@@ -741,7 +797,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.black,
                                               width: 0.5,
                                             ),
@@ -770,9 +826,9 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0x00F1F4F8),
+                                          fillColor: Color(0x00F1F4F8),
                                           suffixIcon: InkWell(
-                                            onTap: () => setState(
+                                            onTap: () => safeSetState(
                                               () => _model.passwordVisibility =
                                                   !_model.passwordVisibility,
                                             ),
@@ -791,30 +847,38 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                           ),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              letterSpacing: 0.0,
+                                            ),
                                         validator: _model
-                                            .passwordControllerValidator
+                                            .passwordTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  Container(
                                     width: double.infinity,
                                     child: TextFormField(
                                       controller:
-                                          _model.passwordConfirmController,
+                                          _model.passwordConfirmTextController,
                                       focusNode:
                                           _model.passwordConfirmFocusNode,
                                       autofocus: true,
-                                      autofillHints: const [AutofillHints.password],
+                                      autofillHints: [AutofillHints.password],
                                       obscureText:
                                           !_model.passwordConfirmVisibility,
                                       decoration: InputDecoration(
                                         labelText: 'Confirm Password',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium,
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              letterSpacing: 0.0,
+                                            ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.black,
                                             width: 0.5,
                                           ),
@@ -822,7 +886,7 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                               BorderRadius.circular(12.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.black,
                                             width: 0.5,
                                           ),
@@ -848,9 +912,9 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                               BorderRadius.circular(12.0),
                                         ),
                                         filled: true,
-                                        fillColor: const Color(0x00F1F4F8),
+                                        fillColor: Color(0x00F1F4F8),
                                         suffixIcon: InkWell(
-                                          onTap: () => setState(
+                                          onTap: () => safeSetState(
                                             () => _model
                                                     .passwordConfirmVisibility =
                                                 !_model
@@ -869,17 +933,21 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Plus Jakarta Sans',
+                                            letterSpacing: 0.0,
+                                          ),
                                       minLines: 1,
                                       validator: _model
-                                          .passwordConfirmControllerValidator
+                                          .passwordConfirmTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
@@ -894,12 +962,14 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                           }
                                           GoRouter.of(context)
                                               .prepareAuthEvent();
-                                          if (_model.passwordController.text !=
-                                              _model.passwordConfirmController
+                                          if (_model.passwordTextController
+                                                  .text !=
+                                              _model
+                                                  .passwordConfirmTextController
                                                   .text) {
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
-                                              const SnackBar(
+                                              SnackBar(
                                                 content: Text(
                                                   'Passwords don\'t match!',
                                                 ),
@@ -911,8 +981,9 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                           final user = await authManager
                                               .createAccountWithEmail(
                                             context,
-                                            _model.emailAddressController.text,
-                                            _model.passwordController.text,
+                                            _model.emailAddressTextController
+                                                .text,
+                                            _model.passwordTextController.text,
                                           );
                                           if (user == null) {
                                             return;
@@ -921,21 +992,22 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                           await currentUserReference!
                                               .update(createUsersRecordData(
                                             email: _model
-                                                .emailAddressController.text,
+                                                .emailAddressTextController
+                                                .text,
                                             displayName:
-                                                _model.nameController1.text,
+                                                _model.nameTextController1.text,
                                             phoneNumber: _model
-                                                .phoneNumberController.text,
+                                                .phoneNumberTextController.text,
                                             lastName:
-                                                _model.nameController2.text,
+                                                _model.nameTextController2.text,
                                             uid: currentUserReference?.id,
                                             createdTime:
                                                 dateTimeFromSecondsSinceEpoch(
                                                     getCurrentTimestamp
                                                         .secondsSinceEpoch),
                                             photoUrl: _model.uploadedFileUrl,
-                                            loginpassword:
-                                                _model.passwordController.text,
+                                            loginpassword: _model
+                                                .passwordTextController.text,
                                             code: 2,
                                           ));
                                           context.safePop();
@@ -945,10 +1017,10 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                           width: double.infinity,
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: Colors.black,
                                           textStyle:
@@ -958,9 +1030,10 @@ class _AddEmployeeWidgetState extends State<AddEmployeeWidget> {
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
                                                     color: Colors.white,
+                                                    letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
